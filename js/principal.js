@@ -198,6 +198,7 @@ function listadoCitas(){
 function mostrarFormularioCliente(){
 	ocultarCapas();
 	document.getElementById("divFrmCliente").style.display = "block";
+	frmAltaCliente.btnAceptarCliente.addEventListener("click", validarCliente, false);
 }
 
 function mostrarFormularioOperario(){
@@ -213,6 +214,7 @@ function mostrarFormularioAdministrativo(){
 function mostrarFormularioMaterial(){
 	ocultarCapas();	
 	document.getElementById("divFrmMaterial").style.display = "block";
+	frmAltaMaterial.btnAceptarMaterial.addEventListener("click", validarAltaMaterial, false);
 }
 
 function mostrarFormularioCita(){
@@ -223,11 +225,13 @@ function mostrarFormularioCita(){
 function mostrarFormularioAsignarMaterial(){
 	ocultarCapas();
 	document.getElementById("divFrmAsignarMaterial").style.display = "block";
+	frmAsignarMaterial.btnAceptarAsignarMaterial.addEventListener("click", validarAsignarMaterial, false);
 }
 
 function mostrarFormularioAsignarOperario(){
 	ocultarCapas();
 	document.getElementById("divFrmAsignarOperario").style.display = "block";
+	frmAsignarOperario.btnAceptarAsignarOperario.addEventListener("click", validarAsignarOperario, false);
 }
 
 function mostrarFormularioListadoCitas(){
@@ -239,6 +243,278 @@ function mostrarJumbotron(){
 	ocultarCapas();
 	document.getElementById("jumbo").style.display = "block";
 }
+
+//Funciones para validar Formularios
+//Validar Alta Cliente
+function validarCliente(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del Ciente
+    var sDNI = frmAltaCliente.txtDniCli.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmAltaCliente.txtDniCli.classList.add("error");
+        frmAltaCliente.txtDniCli.focus();
+        sError += " El DNI debe contener 8 numeros y una vocal final.";
+    }
+	//Validar nombre del cliente
+    var sNombre = frmAltaCliente.txtNombreCli.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmAltaCliente.txtNombreCli.classList.add("error");
+        frmAltaCliente.txtNombreCli.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+    }
+
+    //Validar Direccion del cliente
+    var sDireccion = frmAltaCliente.txtDireccionCli.value.trim();
+    oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sDireccion) == false) {
+
+        if (bValido == true) { // ==> Primer error detectado en este campo
+            frmAltaCliente.txtDireccionCli.focus();
+            bValido = false;
+        }
+
+        frmAltaCliente.txtDireccionCli.classList.add("error");
+
+        sError += "\n La direccion es incorrecta.";
+    }
+
+    //Validar telefono del cliente 
+    var sTelefono = frmAltaCliente.txtTfnoCli.value.trim();
+    oExpReg = /^[679]\d{8}$/;
+
+    if (oExpReg.test(sTelefono) == false) {
+
+        if (bValido == true) { // ==> Primer error detectado en este campo
+            frmAltaCliente.txtTfnoCli.focus();
+            bValido = false;
+        }
+
+        frmAltaCliente.txtTfnoCli.classList.add("error");
+
+        sError += "\n El teléfono es incorrecto.";
+    }
+
+    
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
+//Validar Asignar Material
+function validarAsignarMaterial(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	//Validar ID de Asignar Material
+	var sID = frmAsignarMaterial.txtIDMat.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+    if (oExpReg.test(sID) == false) {
+        bValido = false;
+
+        frmAsignarMaterial.txtIDMat.classList.add("error");
+        frmAsignarMaterial.txtIDMat.focus();
+        sError += " El ID debe ser numérico entre 1 y 9 digitos.";
+    }
+	//Validar nombre de Asignar Material
+    var sNombre = frmAsignarMaterial.txtNombreMat.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmAsignarMaterial.txtNombreMat.classList.add("error");
+        frmAsignarMaterial.txtNombreMat.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+    }
+	//Validar Precio de Asignar Material
+	var sPrecio = frmAsignarMaterial.txtPrecioMat.value.trim();
+    var oExpReg = /^[0-9\s]{1,4}$/;
+
+    if (oExpReg.test(sPrecio) == false) {
+        bValido = false;
+
+        frmAsignarMaterial.txtPrecioMat.classList.add("error");
+        frmAsignarMaterial.txtPrecioMat.focus();
+        sError += "\n El Precio debe ser numérico entre 1 y 4 digitos.";
+    }
+	//Validar Cita de Asignar Material
+	var sCita = frmAsignarMaterial.txtCitaMat.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+    if (oExpReg.test(sCita) == false) {
+        bValido = false;
+
+        frmAsignarMaterial.txtCitaMat.classList.add("error");
+        frmAsignarMaterial.txtCitaMat.focus();
+        sError += "\n La cita debe ser numérico entre 1 y 9 digitos.";
+    }
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
+
+//Validar Asignar Operario
+function validarAsignarOperario(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+
+	//Validar Operario de Asignar operario
+    var sDNI = frmAsignarOperario.txtOperarioOp.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmAsignarOperario.txtOperarioOp.classList.add("error");
+        frmAsignarOperario.txtOperarioOp.focus();
+        sError += "Introduce el DNI del operario, debe contener 8 numeros y una vocal final.";
+    }
+	
+	//Validar Cita de Asignar operario
+	var sCita = frmAsignarOperario.txtCitaOp.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+    if (oExpReg.test(sCita) == false) {
+        bValido = false;
+
+        frmAsignarOperario.txtCitaOp.classList.add("error");
+        frmAsignarOperario.txtCitaOp.focus();
+        sError += "\n La cita debe ser numérico entre 1 y 9 digitos.";
+    }
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
+//Validar Alta Material
+function validarAltaMaterial(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	//Validar Codigo de Alta Material
+	var sCod = frmAltaMaterial.txtCodMat.value.trim();
+    var oExpReg = /^[a-zA-Z]{3}\d{3}$/;
+
+    if (oExpReg.test(sCod) == false) {
+        bValido = false;
+
+        frmAltaMaterial.txtCodMat.classList.add("error");
+        frmAltaMaterial.txtCodMat.focus();
+        sError += " El Codigo debe empezar por 3 vocales seguido de 3 digitos.";
+    }
+	//Validar nombre de Alta Material
+    var sNombre = frmAltaMaterial.txtNombreMat.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmAltaMaterial.txtNombreMat.classList.add("error");
+        frmAltaMaterial.txtNombreMat.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+    }
+	//Validar Precio de Alta Material
+	var sPrecio = frmAltaMaterial.txtPrecioMat.value.trim();
+    var oExpReg = /^[0-9\s]{1,4}$/;
+
+    if (oExpReg.test(sPrecio) == false) {
+        bValido = false;
+
+        frmAltaMaterial.txtPrecioMat.classList.add("error");
+        frmAltaMaterial.txtPrecioMat.focus();
+        sError += "\n El Precio debe ser numérico entre 1 y 4 digitos.";
+    }
+	//Validar Descripcion de Alta Material
+	var sDes = frmAltaMaterial.txtDescripcionMat.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
+
+    if (oExpReg.test(sDes) == false) {
+        bValido = false;
+
+        frmAltaMaterial.txtDescripcionMat.classList.add("error");
+        frmAltaMaterial.txtDescripcionMat.focus();
+        sError += "\n Añade una descripción.";
+    }
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
+function limpiarErrores() {
+	frmAltaCliente.txtDniCli.classList.remove("error");
+    frmAltaCliente.txtNombreCli.classList.remove("error");
+    frmAltaCliente.txtDireccionCli.classList.remove("error");
+    frmAltaCliente.txtTfnoCli.classList.remove("error");
+	frmAsignarMaterial.txtIDMat.classList.remove("error");
+	frmAsignarMaterial.txtNombreMat.classList.remove("error");
+	frmAsignarMaterial.txtPrecioMat.classList.remove("error");
+	frmAsignarMaterial.txtCitaMat.classList.remove("error");
+	frmAsignarOperario.txtOperarioOp.classList.remove("error");
+	frmAsignarOperario.txtCitaOp.classList.remove("error");
+	frmAltaMaterial.txtCodMat.classList.remove("error");
+	frmAltaMaterial.txtNombreMat.classList.remove("error");
+	frmAltaMaterial.txtPrecioMat.classList.remove("error");
+	frmAltaMaterial.txtDescripcionMat.classList.remove("error");
+   
+}
+
 
 function ocultarCapas(){
 	borrarCampos();
