@@ -16,38 +16,44 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ml-md-5 mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" onclick="mostrarFormularioCliente();">Alta Cliente</a>
+              <a class="nav-link" href="#" id="formularioCliente" name="formularioCliente">Alta Cliente</a>
             </li>
             <li class="nav-itemmr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" onclick="mostrarFormularioOperario();">Alta Operario</a>
+              <a class="nav-link" href="#" id="formularioOperario" name="formularioOperario">Alta Operario</a>
+            </li>
+            <li class="nav-itemmr-md-4 mr-lg-5">
+              <a class="nav-link" href="#" id="formularioAdministrativo" name="formularioAdministrativo">Alta Administrativo</a>
+            </li>
+            <li class="nav-itemmr-md-4 mr-lg-5">
+              <a class="nav-link" href="#" id="formularioMaterial" name="formularioMaterial">Alta Material</a>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" onclick="mostrarFormularioCita();">Crear Cita</a>
+              <a class="nav-link" href="#" id="formularioCita" name="formularioCita">Crear Cita</a>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" onclick="mostrarFormularioAsignarMaterial();">Asignar Material</a>
+              <a class="nav-link" href="#" id="formularioAsignarMaterial" name="formularioAsignarMaterial">Asignar Material</a>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" onclick="mostrarFormularioAsignarOperario();">Asignar Operario</a>
+              <a class="nav-link" href="#" id="formularioAsignarOperario" name="formularioAsignarOperario">Asignar Operario</a>
             </li>
             <li class="nav-item dropdown mr-md-4 mr-lg-5">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="cancelar();">Listados</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" name="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listados</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item dropdown-item-ligth" href="#" onclick="listadoClientes();">Clientes</a>
-                <a class="dropdown-item" href="#" onclick="listadoOperario();">Operarios</a>
-                <a class="dropdown-item" href="#" onclick="listadoCitas();">Citas</a>
-                <a class="dropdown-item" href="#" onclick="mostrarFormularioListadoCitas();">Citas en un periodo</a>
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="listaClientes" name="listaClientes">Clientes</a>
+                <a class="dropdown-item" href="#" id="listaOperario" name="listaOperario">Operarios</a>
+                <a class="dropdown-item" href="#" id="listaCitas" name="listaCitas">Citas</a>
+                <a class="dropdown-item" href="#" id="formularioListadoCitas" name="formularioListadoCitas">Citas en un periodo</a>
               </div>
             </li>
           </ul>
-          <input type="button" id="btnSalir" name="btnSalir" class="btn btn-danger" value="Salir" onclick="salir();"/>
+          <input type="button" id="btnSalir" name="btnSalir" class="btn btn-danger" value="Salir"/>
         </div>
       </nav>
     </div>  <!-- fin de la barra de navegacion --> 
 
     <div id="divGestion" class="container mt-5">
       <div id="jumbo" class="jumbotron text-center bg-white">
-        <img src="img/logo.png" alt="BricoUpo">
+      	<img src="img/logo.png" alt="UPOBRICO">
         <h3>Sistema de gestión</h3>
         <h4> Elija una opción.</h4>
       </div>
@@ -56,35 +62,35 @@
         <form class="col-12" method="post" id="frmAltaCliente">
           <div id="camposCliente">
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtNif">DNI:</label>
+              <label class="control-label col-md-2 " for="txtDniCli">DNI:</label>
               <div class="col-md-10">
-                <input class="form-control" id="txtDni" name="txtDni" placeholder="12345678X" type="text">
+                <input class="form-control" id="txtDniCli" name="txtDniCli" placeholder="12345678X" type="text">
               </div>
             </div>
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtNombre">NOMBRE:</label>
+              <label class="control-label col-md-2 " for="txtNombreCli">NOMBRE:</label>
               <div class="col-md-10">
-                <input class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre" type="text">
+                <input class="form-control" id="txtNombreCli" name="txtNombreCli" placeholder="Nombre" type="text">
               </div>
             </div>
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtDireccion">DIRECCION:</label>
+              <label class="control-label col-md-2 " for="txtDireccionCli">DIRECCION:</label>
               <div class="col-md-10">
-                <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" placeholder="Direccion">
+                <input type="text" class="form-control" id="txtDireccionCli" name="txtDireccionCli" placeholder="Direccion">
               </div>
             </div>
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtTfno">TELEFONO:</label>
+              <label class="control-label col-md-2 " for="txtTfnoCli">TELEFONO:</label>
               <div class="col-md-10">
-                <input class="form-control" id="txtTfno" name="txtTfno" placeholder="666666666" type="text"/>
+                <input class="form-control" id="txtTfnoCli" name="txtTfnoCli" placeholder="666666666" type="text"/>
               </div>
             </div>
           </div>
           <div class="row d-flex justify-content-end">
             <div class="form-group mr-3">
-              <input type="button" id="btnAceptarCliente" name="btnAceptarCliente" class="btn btn-primary " value="Aceptar" onclick="altaCliente();" />
-              <input type="button" id="btnBorrarCliente" name="btnBorrarCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar" onclick="borrarCamposCliente();" />
-              <input type="button" id="btnCancelarCliente" name="btnCancelarCliente" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+              <input type="button" id="btnAceptarCliente" name="btnAceptarCliente" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarCliente" name="btnBorrarCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarCliente" name="btnCancelarCliente" class="btn btn-danger" value="Cancelar"/>
             </div>
           </div>
         </form>
@@ -94,27 +100,92 @@
         <form class="col-12" method="post" id="frmAltaOperario">
           <div id="camposOperario">
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtNif">DNI:</label>
+              <label class="control-label col-md-2 " for="txtDniOp">DNI:</label>
               <div class="col-md-10">
-                <input class="form-control" id="txtDni" name="txtDni" placeholder="12345678X" type="text">
+                <input class="form-control" id="txtDniOp" name="txtDniOp" placeholder="12345678X" type="text">
               </div>
             </div>
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtNombre">NOMBRE:</label>
+              <label class="control-label col-md-2 " for="txtNombreOp">NOMBRE:</label>
               <div class="col-md-10">
-                <input class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre" type="text">
+                <input class="form-control" id="txtNombreOp" name="txtNombreOp" placeholder="Nombre" type="text">
               </div>
             </div>
           </div>
           <div class="row d-flex justify-content-end">
             <div class="form-group mr-3">
-              <input type="button" id="btnAceptarOperario" name="btnAceptarOperario" class="btn btn-primary " value="Aceptar" onclick="altaOperario();" />
-              <input type="button" id="btnBorrarOperario" name="btnBorrarOperario" class="btn btn-secundary mr-2 ml-2" value="Borrar" onclick="borrarCamposOperario();" />
-              <input type="button" id="btnCancelarOperario" name="btnCancelarOperario" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+              <input type="button" id="btnAceptarOperario" name="btnAceptarOperario" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarOperario" name="btnBorrarOperario" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarOperario" name="btnCancelarOperario" class="btn btn-danger" value="Cancelar"/>
             </div>
           </div>
         </form>
       </div>
+
+      <div class="row col-12" id="divFrmAdministrativo">
+        <form class="col-12" method="post" id="frmAltaAdministrativo">
+          <div id="camposAdministrativo">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDniAdm">DNI:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDniAdm" name="txtDniAdm" placeholder="12345678X" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtNombreAdm">NOMBRE:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtNombreAdm" name="txtNombreAdm" placeholder="Nombre" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarAdministrativo" name="btnAceptarAdministrativo" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarAdministrativo" name="btnBorrarAdministrativo" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarAdministrativo" name="btnCancelarAdministrativo" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row col-12" id="divFrmMaterial">
+        <form class="col-12" method="post" id="frmAltaMaterial">
+          <div id="camposMaterial">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtCodMat">CODIGO:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtCodMat" name="txtCodMat" placeholder="XXX111" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtNombreMat">NOMBRE:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtNombreMat" name="txtNombreMat" placeholder="Nombre" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtPrecioMat">PRECIO:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtPrecioMat" name="txtPrecioMat" placeholder="12" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDescripcionMat">DESCRIPCION:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDescripcionMat" name="txtDescripcionMat" placeholder="" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarMaterial" name="btnAceptarMaterial" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarMaterial" name="btnBorrarMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarMaterial" name="btnCancelarMaterial" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
 
   <div class="row col-12" id="divFrmCita">
     <form class="col-12" method="post" id="frmCita">
@@ -126,29 +197,29 @@
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFecha">FECHA:</label>
+          <label class="control-label col-md-3 " for="txtFechaCita">FECHA:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtFecha" name="txtFecha" placeholder="01/01/2018">
+            <input type="text" class="form-control" id="txtFechaCita" name="txtFechaCita" placeholder="01/01/2018">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtCliente">CLIENTE:</label>
+          <label class="control-label col-md-3 " for="txtClienteCita">CLIENTE:</label>
           <div class="col-md-9">
-            <input class="form-control" id="txtCliente" name="txtCliente" placeholder="1235" type="text">
+            <input class="form-control" id="txtClienteCita" name="txtClienteCita" placeholder="1235" type="text">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtIncidencia">INCIDENCIA:</label>
+          <label class="control-label col-md-3 " for="txtIncidenciaCita">INCIDENCIA:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtIncidencia" name="txtIncidencia" placeholder="01/01/2018">
+            <input type="text" class="form-control" id="txtIncidenciaCita" name="txtIncidenciaCita" placeholder="tuberias">
           </div>
         </div>
       </div>
       <div class="row d-flex justify-content-end">
         <div class="form-group mr-3">
-          <input type="button" id="btnAceptarCita" name="btnAceptarCita" class="btn btn-primary " value="Aceptar" onclick="altacita();" />
-          <input type="button" id="btnBorrarCita" name="btnBorrarCita" class="btn btn-secundary mr-2 ml-2" value="Borrar" onclick="borrarCamposCita();" />
-          <input type="button" id="btnCancelarCita" name="btnCancelarCita" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+          <input type="button" id="btnAceptarCita" name="btnAceptarCita" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarCita" name="btnBorrarCita" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarCita" name="btnCancelarCita" class="btn btn-danger" value="Cancelar"/>
         </div>
       </div>
     </form>
@@ -158,35 +229,35 @@
     <form class="col-12" method="post" id="frmAsignarMaterial">
       <div id="camposAsignarMaterial">
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtID">ID:</label>
+          <label class="control-label col-md-3 " for="txtIDMat">ID:</label>
           <div class="col-md-9">
-            <input class="form-control" id="txtID" name="txtID" placeholder="0123456789" type="text">
+            <input class="form-control" id="txtIDMat" name="txtIDMat" placeholder="0123456789" type="text">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtNombre">NOMBRE:</label>
+          <label class="control-label col-md-3 " for="txtNombreMat">NOMBRE:</label>
           <div class="col-md-9">
-            <input class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre" type="text">
+            <input class="form-control" id="txtNombreMat" name="txtNombreMat" placeholder="Nombre" type="text">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtPrecio">PRECIO:</label>
+          <label class="control-label col-md-3 " for="txtPrecioMat">PRECIO:</label>
           <div class="col-md-9">
-            <input class="form-control" id="txtPrecio" name="txtPrecio" placeholder="1234" type="text">
+            <input class="form-control" id="txtPrecioMat" name="txtPrecioMat" placeholder="1234" type="text">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtCita">CITA:</label>
+          <label class="control-label col-md-3 " for="txtCitaMat">CITA:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtCita" name="txtCita" placeholder="">
+            <input type="text" class="form-control" id="txtCitaMat" name="txtCitaMat" placeholder="">
           </div>
         </div>
       </div>
       <div class="row d-flex justify-content-end">
         <div class="form-group mr-3">
-          <input type="button" id="btnAceptarAsignarMaterial" name="btnAceptarAsignarMaterial" class="btn btn-primary " value="Aceptar" onclick="asignarMaterial();" />
-          <input type="button" id="btnBorrarAsignarMaterial" name="btnBorrarAsignarMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar" onclick="borrarCamposAsignarMaterial();" />
-          <input type="button" id="btnCancelarAsignarMaterial" name="btnCancelarAsignarMaterial" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+          <input type="button" id="btnAceptarAsignarMaterial" name="btnAceptarAsignarMaterial" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarAsignarMaterial" name="btnBorrarAsignarMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarAsignarMaterial" name="btnCancelarAsignarMaterial" class="btn btn-danger" value="Cancelar"/>
         </div>
       </div>
     </form>
@@ -196,24 +267,24 @@
     <form class="col-12" method="post" id="frmAsignarOperario">
       <div id="camposAsignarOperario">
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtOperario">OPERARIO:</label>
+          <label class="control-label col-md-3 " for="txtOperarioOp">OPERARIO:</label>
           <div class="col-md-9">
-            <input class="form-control" id="txtOperario" name="txtOperario" placeholder="" type="text">
+            <input class="form-control" id="txtOperarioOp" name="txtOperarioOp" placeholder="" type="text">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtCita">CITA:</label>
+          <label class="control-label col-md-3 " for="txtCitaOp">CITA:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtCita" name="txtCita" placeholder="">
+            <input type="text" class="form-control" id="txtCitaOp" name="txtCitaOp" placeholder="">
           </div>
         </div>
       </div>
 
       <div class="row d-flex justify-content-end">
         <div class="form-group mr-3">
-          <input type="button" id="btnAceptarAsignarOperario" name="btnAceptarAsignarOperario" class="btn btn-primary " value="Aceptar" onclick="asignarOperario();" />
-          <input type="button" id="btnBorrarAsignarOperario" name="btnBorrarAsignarOperario" class="btn btn-secundary mr-2 ml-2" value="Borrar" onclick="borrarCamposAsignarOperario();" />
-          <input type="button" id="btnCancelarAsignarOperario" name="btnCancelarAsignarOperario" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+          <input type="button" id="btnAceptarAsignarOperario" name="btnAceptarAsignarOperario" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarAsignarOperario" name="btnBorrarAsignarOperario" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarAsignarOperario" name="btnCancelarAsignarOperario" class="btn btn-danger" value="Cancelar"/>
         </div>
       </div>
     </form>
@@ -224,30 +295,31 @@
       <div id="camposFechasCitas">
         <legend>Listado de Citas en un periodo</legend>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFechaInicioCitas">Fecha Inicial:</label>
+          <label class="control-label col-md-3 " for="txtFechaInicioCitasPer">Fecha Inicial:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtFechaInicioCitas" name="txtFechaInicioCitas" placeholder="01/01/2018">
+            <input type="text" class="form-control" id="txtFechaInicioCitasPer" name="txtFechaInicioCitasPer" placeholder="01/01/2018">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFechaFinCitas">Fecha Final:</label>
+          <label class="control-label col-md-3 " for="txtFechaFinCitasPer">Fecha Final:</label>
           <div class="col-md-9">
-            <input type="text" class="form-control" id="txtFechaFinCitas" name="txtFechaFinCitas" placeholder="01/01/2018">
+            <input type="text" class="form-control" id="txtFechaFinCitasPer" name="txtFechaFinCitasPer" placeholder="01/01/2018">
           </div>
         </div>
       </div>
 
       <div class="row d-flex justify-content-end">
         <div class="form-group-inline mr-3">
-          <input type="button" id="btnAceptarCitas" name="btnAceptarCitas" class="mb-2 mr-2 btn btn-primary " value="Aceptar" onclick="listadoCitas();" />
-          <input type="button" id="btnBorrarCitas" name="btnBorrarCitas" class="mb-2 btn btn-secundary mr-2 " value="Borrar" onclick="borrarCamposFechaCitas();" />
-          <input type="button" id="btnCancelarCitas" name="btnCancelarCitas" class="btn btn-danger" value="Cancelar" onclick="cancelar();" />
+          <input type="button" id="btnAceptarCitas" name="btnAceptarCitas" class="mb-2 mr-2 btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarCitas" name="btnBorrarCitas" class="mb-2 btn btn-secundary mr-2 " value="Borrar"/>
+          <input type="button" id="btnCancelarCitas" name="btnCancelarCitas" class="btn btn-danger" value="Cancelar"/>
         </div>
       </div>
     </form>
   </div>
 </div>  <!-- final del container de formularios -->
 </div>
+
 <script src="js/objetos.js"></script>
 <script src="js/principal.js"></script>
 
