@@ -8,6 +8,7 @@ mostrarJumbotron();
 function mostrarFormularioCliente(){
 	ocultarCapas();
 	document.getElementById("divFrmCliente").style.display = "block";
+	
 }
 
 function mostrarFormularioOperario(){
