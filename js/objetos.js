@@ -12,11 +12,13 @@ function Brico(){
 
 Brico.prototype.buscar = function(sNIF,lista){
 
-	var oObjecto = null;
+	var oObjeto = null;
 	var array = lista.filter(n => n.NIF == sNIF);
 
-	if (array.length > 0)
-		oCliente = array[0];
+
+	if (array.length > 0){
+		oObjeto = array[0];
+	}
 
 	return oObjeto;    
 }
@@ -61,7 +63,7 @@ Brico.prototype.altaMaterial = function(oMaterial){
 	return sRespuesta;
 }
 
-Brico.prototype.buscarMaterial = function(sID){
+Brico.prototype.buscarMaterial = function(sID,lista){
 
 	var oMaterial = null;
 	var array = lista.filter(n => n.ID == sID);
@@ -83,12 +85,18 @@ Brico.prototype.altaCita = function(oCita){
 	return sRespuesta;
 }
 
+//para el listado de citas en un periodo
+Brico.prototype.listadoCitasPeriodo = function(dFechaInicio,dFechaFin){
+	
+}
+
+
 
 class Cliente{
 	constructor(sNIF,sNombre,sDireccion,iTelefono) {
 		this.NIF = sNIF;
 		this.nombre = sNombre ;
-		this.apellidos = sDireccion;
+		this.direccion = sDireccion;
 		this.telefono = iTelefono ;
 	}
 }	
@@ -97,6 +105,14 @@ class Operario{
 	constructor(sNIF,sNombre) {
 		this.NIF = sNIF;
 		this.nombre = sNombre ;
+	}
+
+	getNif(){
+		return this.NIF;
+	}
+
+	getNombre(){
+		return this.nombre;
 	}
 }	
 
@@ -109,6 +125,16 @@ class Cita{
 		this.materiales = [];
 		this.incidencias = [];
 		this.operario = null;		
+	}
+
+	getID(){
+		return this.ID;
+	}
+	getFecha(){
+		return this.fecha;
+	}
+	getCliente(){
+		return this.cliente;
 	}
 }
 
