@@ -10,6 +10,11 @@ function Brico(){
 
 }
 
+Brico.prototype.getCita = function(){
+	return this.iNumCita;
+}
+
+
 Brico.prototype.buscar = function(sNIF,lista){
 
 	var oObjeto = null;
@@ -25,7 +30,7 @@ Brico.prototype.buscar = function(sNIF,lista){
 
 Brico.prototype.altaCliente = function(oCliente){
 
-	var sRespuesta = "No se ha podido dar de alta al cliente";
+	var sRespuesta = "Ya existe un cliente con ese NIF en la base de datos";
 	if(this.buscar(oCliente.NIF,this.clientes)==null){
 		this.clientes.push(oCliente);
 		sRespuesta = "Cliente dado de alta satisfactoriamente"; 	

@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown mr-md-4 mr-lg-5">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAlt" name="navbarDropdownMenuLinkAlt" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Altas</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAlt" name="navbarDropdownMenuLinkAlt" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dar de alta</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAlt">
                 <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioCliente" name="formularioCliente">Clientes</a>
                 <a class="dropdown-item" href="#" id="formularioOperario" name="formularioOperario">Operarios</a>
@@ -36,7 +36,7 @@
               </div>
             </li>
              <li class="nav-item dropdown mr-md-4 mr-lg-5">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkBor" name="navbarDropdownMenuLinkBor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Borrar</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkBor" name="navbarDropdownMenuLinkBor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dar de baja</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkBor">
                 <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioClienteBor" name="formularioClienteBor">Cliente</a>
                 <a class="dropdown-item" href="#" id="formularioOperarioBor" name="formularioOperarioBor">Operario</a>
@@ -50,15 +50,17 @@
             <li class="nav-item mr-md-4 mr-lg-5">
               <a class="nav-link" href="#" id="formularioCita" name="formularioCita">Crear Cita</a>
             </li>
-            <li class="nav-item mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioAsignarMaterial" name="formularioAsignarMaterial">Asignar Material</a>
+            <li class="nav-item dropdown mr-md-4 mr-lg-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAsig" name="navbarDropdownMenuLinkAsig" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asignaciones</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAsig">
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioAsignarOperario" name="formularioAsignarOperario">Operario</a>
+                <a class="dropdown-item" href="#" id="formularioAsignarAdministrativo" name="formularioAsignarAdministrativo">Administrativo</a>
+                <a class="dropdown-item" href="#" id="formularioAsignarMaterial" name="formularioAsignarMaterial">Material</a>
+              </div>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
               <a class="nav-link" href="#" id="formularioAsignarIncidencia" name="formularioAsignarIncidencia">Apuntar Incidencia</a>
-            </li>
-            <li class="nav-item mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioAsignarOperario" name="formularioAsignarOperario">Asignar Operario</a>
-            </li>
+            </li>            
             <li class="nav-item dropdown mr-md-4 mr-lg-5">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" name="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listados</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -69,7 +71,6 @@
               </div>
             </li>
           </ul>
-          <input type="button" id="btnSalir" name="btnSalir" class="btn btn-danger" value="Salir"/>
         </div>
       </nav>
     </div>  <!-- fin de la barra de navegacion --> 
@@ -175,19 +176,13 @@
         <form class="col-12" method="post" id="frmAltaIncidencia">
           <div id="camposIncidencias">
             <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtNumIncidencia">Numero:</label>
-              <div class="col-md-10">
-                <input class="form-control" id="txtNumIncidencia" name="txtNumIncidencia" placeholder="" type="text">
-              </div>
-            </div>
-            <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtCitaInc">Cita:</label>
+              <label class="control-label col-md-2 " for="txtCitaInc">CITA Nº:</label>
               <div class="col-md-10">
                 <input class="form-control" id="txtCitaInc" name="txtCitaInc" placeholder="1" type="text">
               </div>
             </div>
              <div class="form-group row align-items-center">
-              <label class="control-label col-md-2 " for="txtDescInc">Descripción:</label>
+              <label class="control-label col-md-2 " for="txtDescInc">DESCRIPCIÓN:</label>
               <div class="col-md-10">
                 <input class="form-control" id="txtDescInc" name="txtDescInc" placeholder="1" type="text">
               </div>
@@ -248,27 +243,27 @@
     <form class="col-12" method="post" id="frmCita">
       <div id="camposCita">
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtNumCita">Nº CITA:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtNumCita" name="txtNumCita" placeholder="0123456789" type="text">
+          <label class="control-label col-md-2 " for="txtNumCita">Nº CITA:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtNumCita" name="txtNumCita"  type="text" disabled>
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFechaCita">FECHA:</label>
-          <div class="col-md-9">
+          <label class="control-label col-md-2 " for="txtFechaCita">FECHA:</label>
+          <div class="col-md-10">
             <input type="text" class="form-control" id="txtFechaCita" name="txtFechaCita" placeholder="01/01/2018">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtClienteCita">CLIENTE:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtClienteCita" name="txtClienteCita" placeholder="1235" type="text">
+          <label class="control-label col-md-2 " for="txtClienteCita">CLIENTE:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtClienteCita" name="txtClienteCita" placeholder="12345678X" type="text">
           </div>
         </div>
-        <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtIncidenciaCita">INCIDENCIA:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" id="txtIncidenciaCita" name="txtIncidenciaCita" placeholder="tuberias">
+         <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtDescripcionCita">DESCRIPCION:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtDescripcionCita" name="txtDescripcionCita" type="text">
           </div>
         </div>
       </div>
@@ -286,27 +281,15 @@
     <form class="col-12" method="post" id="frmAsignarMaterial">
       <div id="camposAsignarMaterial">
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtIDMat">ID:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtIDMat" name="txtIDMat" placeholder="0123456789" type="text">
+          <label class="control-label col-md-2 " for="txtCitaMat">CITA Nº:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="txtCitaMat" name="txtCitaMat" placeholder="1">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtNombreMat">NOMBRE:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtNombreMat" name="txtNombreMat" placeholder="Nombre" type="text">
-          </div>
-        </div>
-        <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtPrecioMat">PRECIO:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtPrecioMat" name="txtPrecioMat" placeholder="1234" type="text">
-          </div>
-        </div>
-        <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtCitaMat">CITA:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" id="txtCitaMat" name="txtCitaMat" placeholder="">
+          <label class="control-label col-md-2 " for="txtIDMat">CÓDIGO MATERIAL:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtIDMat" name="txtIDMat" placeholder="ABC123" type="text">
           </div>
         </div>
       </div>
@@ -324,15 +307,15 @@
     <form class="col-12" method="post" id="frmAsignarOperario">
       <div id="camposAsignarOperario">
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtOperarioOp">OPERARIO:</label>
-          <div class="col-md-9">
-            <input class="form-control" id="txtOperarioOp" name="txtOperarioOp" placeholder="" type="text">
+          <label class="control-label col-md-2 " for="txtCitaOp">CITA Nº:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="txtCitaOp" name="txtCitaOp" placeholder="1">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtCitaOp">CITA:</label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" id="txtCitaOp" name="txtCitaOp" placeholder="">
+          <label class="control-label col-md-2 " for="txtOperarioOp">OPERARIO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtOperarioOp" name="txtOperarioOp" placeholder="12345678X" type="text">
           </div>
         </div>
       </div>
@@ -347,19 +330,46 @@
     </form>
   </div>
 
+  <div class="row col-12" id="divFrmAsignarAdmin">
+    <form class="col-12" method="post" id="frmAsignarAdmin">
+      <div id="camposAsignarAdmin">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtCitaAd">CITA Nº:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="txtCitaAd" name="txtCitaAd" placeholder="1">
+          </div>
+        </div>
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtAdminAd">ADMINISTRATIVO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtAdminAd" name="txtAdminAd" placeholder="12345678X" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarAsignarAdmin" name="btnAceptarAsignarAdmin" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarAsignarAdmin" name="btnBorrarAsignarAdmin" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarAsignarAdmin" name="btnCancelarAsignarAdmin" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <div class="row col-12" id="divFrmFechasCitas">
     <form class="col-12" method="post" id="frmFechasCitas">
       <div id="camposFechasCitas">
         <legend>Listado de Citas en un periodo</legend>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFechaInicioCitasPer">Fecha Inicial:</label>
-          <div class="col-md-9">
+          <label class="control-label col-md-2 " for="txtFechaInicioCitasPer">FECHA INICIAL:</label>
+          <div class="col-md-10">
             <input type="text" class="form-control" id="txtFechaInicioCitasPer" name="txtFechaInicioCitasPer" placeholder="01/01/2018">
           </div>
         </div>
         <div class="form-group row align-items-center">
-          <label class="control-label col-md-3 " for="txtFechaFinCitasPer">Fecha Final:</label>
-          <div class="col-md-9">
+          <label class="control-label col-md-2 " for="txtFechaFinCitasPer">FECHA FINAL:</label>
+          <div class="col-md-10">
             <input type="text" class="form-control" id="txtFechaFinCitasPer" name="txtFechaFinCitasPer" placeholder="01/01/2018">
           </div>
         </div>
