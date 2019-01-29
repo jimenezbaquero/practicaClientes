@@ -16,23 +16,45 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item ml-md-5 mr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioCliente" name="formularioCliente">Alta Cliente</a>
+              <li class="nav-item dropdown mr-md-4 mr-lg-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkAlt" name="navbarDropdownMenuLinkAlt" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Altas</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAlt">
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioCliente" name="formularioCliente">Clientes</a>
+                <a class="dropdown-item" href="#" id="formularioOperario" name="formularioOperario">Operarios</a>
+                <a class="dropdown-item" href="#" id="formularioAdministrativo" name="formularioAdministrativo">Administrativo</a>
+                <a class="dropdown-item" href="#" id="formularioMaterial" name="formularioMaterial">Material</a>
+              </div>
             </li>
-            <li class="nav-itemmr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioOperario" name="formularioOperario">Alta Operario</a>
+            <li class="nav-item dropdown mr-md-4 mr-lg-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkMod" name="navbarDropdownMenuLinkMod" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modificar</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkMod">
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioCliente" name="formularioClienteMod">Cliente</a>
+                <a class="dropdown-item" href="#" id="formularioOperarioMod" name="formularioOperarioMod">Operario</a>
+                <a class="dropdown-item" href="#" id="formularioAdministrativoMod" name="formularioAdministrativoMod">Administrativo</a>
+                <a class="dropdown-item" href="#" id="formularioMaterialMod" name="formularioMaterialMod">Material</a>
+                <a class="dropdown-item" href="#" id="formularioCitaMod" name="formularioCitaMod">Cita</a>
+              </div>
             </li>
-            <li class="nav-itemmr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioAdministrativo" name="formularioAdministrativo">Alta Administrativo</a>
+             <li class="nav-item dropdown mr-md-4 mr-lg-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkBor" name="navbarDropdownMenuLinkBor" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Borrar</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkBor">
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioClienteBor" name="formularioClienteBor">Cliente</a>
+                <a class="dropdown-item" href="#" id="formularioOperarioBor" name="formularioOperarioBor">Operario</a>
+                <a class="dropdown-item" href="#" id="formularioAdministrativoBor" name="formularioAdministrativoBor">Administrativo</a>
+                <a class="dropdown-item" href="#" id="formularioMaterialBor" name="formularioMaterialBor">Material</a>
+                <a class="dropdown-item" href="#" id="formularioCitaBor" name="formularioCitaBor">Cita</a>
+              </div>
             </li>
-            <li class="nav-itemmr-md-4 mr-lg-5">
-              <a class="nav-link" href="#" id="formularioMaterial" name="formularioMaterial">Alta Material</a>
-            </li>
+
+          
             <li class="nav-item mr-md-4 mr-lg-5">
               <a class="nav-link" href="#" id="formularioCita" name="formularioCita">Crear Cita</a>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
               <a class="nav-link" href="#" id="formularioAsignarMaterial" name="formularioAsignarMaterial">Asignar Material</a>
+            </li>
+            <li class="nav-item mr-md-4 mr-lg-5">
+              <a class="nav-link" href="#" id="formularioAsignarIncidencia" name="formularioAsignarIncidencia">Apuntar Incidencia</a>
             </li>
             <li class="nav-item mr-md-4 mr-lg-5">
               <a class="nav-link" href="#" id="formularioAsignarOperario" name="formularioAsignarOperario">Asignar Operario</a>
@@ -148,6 +170,40 @@
           </div>
         </form>
       </div>
+
+      <div class="row col-12" id="divFrmIncidencia">
+        <form class="col-12" method="post" id="frmAltaIncidencia">
+          <div id="camposIncidencias">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtNumIncidencia">Numero:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtNumIncidencia" name="txtNumIncidencia" placeholder="" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtCitaInc">Cita:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtCitaInc" name="txtCitaInc" placeholder="1" type="text">
+              </div>
+            </div>
+             <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDescInc">Descripción:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDescInc" name="txtDescInc" placeholder="1" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarInc" name="btnAceptarInd" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarInc" name="btnBorrarInc" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarInc" name="btnCancelarInc" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
 
       <div class="row col-12" id="divFrmMaterial">
         <form class="col-12" method="post" id="frmAltaMaterial">
