@@ -204,11 +204,13 @@ function mostrarFormularioCliente(){
 function mostrarFormularioOperario(){
 	ocultarCapas();	
 	document.getElementById("divFrmOperario").style.display = "block";
+	frmAltaOperario.btnAceptarOperario.addEventListener("click", validarOperario, false);
 }
 
 function mostrarFormularioAdministrativo(){
 	ocultarCapas();	
 	document.getElementById("divFrmAdministrativo").style.display = "block";
+	frmAltaAdministrativo.btnAceptarAdministrativo.addEventListener("click", validarAdministrativo, false);
 }
 
 function mostrarFormularioMaterial(){
@@ -220,6 +222,7 @@ function mostrarFormularioMaterial(){
 function mostrarFormularioCita(){
 	ocultarCapas();
 	document.getElementById("divFrmCita").style.display = "block";
+	frmCita.btnAceptarCita.addEventListener("click", validarCrearCita, false);
 }
 
 function mostrarFormularioAsignarMaterial(){
@@ -245,6 +248,156 @@ function mostrarJumbotron(){
 }
 
 //Funciones para validar Formularios
+//validar Alta Operario
+function validarOperario(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del Operario
+    var sDNI = frmAltaOperario.txtDniOp.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmAltaOperario.txtDniOp.classList.add("error");
+        frmAltaOperario.txtDniOp.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	//Validar nombre del Operario
+    var sNombre = frmAltaOperario.txtNombreOp.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmAltaOperario.txtNombreOp.classList.add("error");
+        frmAltaOperario.txtNombreOp.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+    }
+   
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
+//validar Alta Administrativo
+function validarAdministrativo(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del Operario
+    var sDNI = frmAltaAdministrativo.txtDniAdm.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmAltaAdministrativo.txtDniAdm.classList.add("error");
+        frmAltaAdministrativo.txtDniAdm.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	//Validar nombre del Operario
+    var sNombre = frmAltaAdministrativo.txtNombreAdm.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmAltaAdministrativo.txtNombreAdm.classList.add("error");
+        frmAltaAdministrativo.txtNombreAdm.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+    }
+   
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+//Validar Crear cita
+function validarCrearCita(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	//Validar Nº de cita
+	var sNum = frmCita.txtNumCita.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+    if (oExpReg.test(sNum) == false) {
+        bValido = false;
+
+        frmCita.txtNumCita.classList.add("error");
+        frmCita.txtNumCita.focus();
+        sError += " El campo NºCITA debe ser numérico entre 1 y 9 digitos.";
+    }
+	//Validar Precio de Asignar Material
+	var sFecha = frmCita.txtFechaCita.value.trim();
+    var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
+
+    if (oExpReg.test(sFecha) == false) {
+        bValido = false;
+
+        frmCita.txtFechaCita.classList.add("error");
+        frmCita.txtFechaCita.focus();
+        sError += "\n Fecha incorrecta debe estar en el siguiente formato dd/mm/aaaa.";
+    }
+	 //Validar DNI de cita
+    var sDNI = frmCita.txtClienteCita.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmCita.txtClienteCita.classList.add("error");
+        frmCita.txtClienteCita.focus();
+        sError += "\n El DNI debe contener 8 numeros y una letra final.";
+    }
+	//Validar incidencia de crear cita
+	var sInci = frmCita.txtIncidenciaCita.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
+
+    if (oExpReg.test(sInci) == false) {
+        bValido = false;
+
+        frmCita.txtIncidenciaCita.classList.add("error");
+        frmCita.txtIncidenciaCita.focus();
+        sError += "\n Añade una descripción.";
+    }
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+
+    }
+
+}
+
 //Validar Alta Cliente
 function validarCliente(oEvento) {
 
@@ -263,7 +416,7 @@ function validarCliente(oEvento) {
 
         frmAltaCliente.txtDniCli.classList.add("error");
         frmAltaCliente.txtDniCli.focus();
-        sError += " El DNI debe contener 8 numeros y una vocal final.";
+        sError += " El DNI debe contener 8 numeros y una letra final.";
     }
 	//Validar nombre del cliente
     var sNombre = frmAltaCliente.txtNombreCli.value.trim();
@@ -354,14 +507,14 @@ function validarAsignarMaterial(oEvento) {
     }
 	//Validar Precio de Asignar Material
 	var sPrecio = frmAsignarMaterial.txtPrecioMat.value.trim();
-    var oExpReg = /^[0-9\s]{1,4}$/;
+    var oExpReg = /^\d+(\.\d{1,2})?$/;
 
     if (oExpReg.test(sPrecio) == false) {
         bValido = false;
 
         frmAsignarMaterial.txtPrecioMat.classList.add("error");
         frmAsignarMaterial.txtPrecioMat.focus();
-        sError += "\n El Precio debe ser numérico entre 1 y 4 digitos.";
+        sError += "\n El Precio debe ser numérico y contener como maximo 2 decimales.";
     }
 	//Validar Cita de Asignar Material
 	var sCita = frmAsignarMaterial.txtCitaMat.value.trim();
@@ -406,7 +559,7 @@ function validarAsignarOperario(oEvento) {
 
         frmAsignarOperario.txtOperarioOp.classList.add("error");
         frmAsignarOperario.txtOperarioOp.focus();
-        sError += "Introduce el DNI del operario, debe contener 8 numeros y una vocal final.";
+        sError += "Introduce el DNI del operario, debe contener 8 numeros y una letra final.";
     }
 	
 	//Validar Cita de Asignar operario
@@ -465,14 +618,14 @@ function validarAltaMaterial(oEvento) {
     }
 	//Validar Precio de Alta Material
 	var sPrecio = frmAltaMaterial.txtPrecioMat.value.trim();
-    var oExpReg = /^[0-9\s]{1,4}$/;
+    var oExpReg = /^\d+(\.\d{1,2})?$/;
 
     if (oExpReg.test(sPrecio) == false) {
         bValido = false;
 
         frmAltaMaterial.txtPrecioMat.classList.add("error");
         frmAltaMaterial.txtPrecioMat.focus();
-        sError += "\n El Precio debe ser numérico entre 1 y 4 digitos.";
+        sError += "\n El Precio debe ser numérico y contener como maximo 2 decimales.";
     }
 	//Validar Descripcion de Alta Material
 	var sDes = frmAltaMaterial.txtDescripcionMat.value.trim();
