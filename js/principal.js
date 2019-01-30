@@ -114,6 +114,7 @@ function altaMaterial(){
 
 function asignarMaterial(){
 	validarAsignarMaterial();
+	
 }
 
 function asignarOperario(){
