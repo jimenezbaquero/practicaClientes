@@ -508,14 +508,14 @@ function validarOperario(oEvento) {
     }
 	//Validar nombre del Operario
     var sNombre = frmAltaOperario.txtNombreOp.value.trim();
-    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
 
     if (oExpReg.test(sNombre) == false) {
         bValido = false;
 
         frmAltaOperario.txtNombreOp.classList.add("error");
         frmAltaOperario.txtNombreOp.focus();
-        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
     }
    
     if (bValido == false) {
@@ -551,14 +551,14 @@ function validarAdministrativo(oEvento) {
     }
 	//Validar nombre del Operario
     var sNombre = frmAltaAdministrativo.txtNombreAdm.value.trim();
-    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
 
     if (oExpReg.test(sNombre) == false) {
         bValido = false;
 
         frmAltaAdministrativo.txtNombreAdm.classList.add("error");
         frmAltaAdministrativo.txtNombreAdm.focus();
-        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
     }
    
     if (bValido == false) {
@@ -604,7 +604,7 @@ function validarCrearCita(oEvento) {
         sError += "\n Fecha incorrecta debe estar en el siguiente formato dd/mm/aaaa.";
     }
 
-//Validar Descripcion l
+    //Validar Descripcion l
 	var sDes = frmCita.txtDescripcionCita.value.trim();
     var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
 
@@ -650,19 +650,19 @@ function validarCliente(oEvento) {
     }
 	//Validar nombre del cliente
     var sNombre = frmAltaCliente.txtNombreCli.value.trim();
-    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
 
     if (oExpReg.test(sNombre) == false) {
         bValido = false;
 
         frmAltaCliente.txtNombreCli.classList.add("error");
         frmAltaCliente.txtNombreCli.focus();
-        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
     }
 
     //Validar Direccion del cliente
     var sDireccion = frmAltaCliente.txtDireccionCli.value.trim();
-    oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+    oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
 
     if (oExpReg.test(sDireccion) == false) {
 
@@ -861,14 +861,14 @@ function validarAltaMaterial(oEvento) {
     }
 	//Validar nombre de Alta Material
     var sNombre = frmAltaMaterial.txtNombreMat.value.trim();
-    var oExpReg = /^[a-zA-Z0-9\s]{6,50}$/;
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
 
     if (oExpReg.test(sNombre) == false) {
         bValido = false;
 
         frmAltaMaterial.txtNombreMat.classList.add("error");
         frmAltaMaterial.txtNombreMat.focus();
-        sError += "\n El nombre debe ser alfanumérico entre 6 y 50 caracteres.";
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
     }
 	//Validar Precio de Alta Material
 	var sPrecio = frmAltaMaterial.txtPrecioMat.value.trim();
