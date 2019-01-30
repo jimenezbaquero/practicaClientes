@@ -106,6 +106,7 @@ function altaMaterial(){
 	var sNombre = document.getElementById("txtNombreMat").value.trim();
 	var fPrecio = document.getElementById("txtPrecioMat").value.trim();
 	var sDescripcion = document.getElementById("txtDescripcionMat").value.trim();
+	
 	var oMaterial = new Material(sID,sNombre,fPrecio,sDescripcion);
 
 	mensaje = oBrico.altaMaterial(oMaterial);
@@ -114,6 +115,14 @@ function altaMaterial(){
 
 function asignarMaterial(){
 	validarAsignarMaterial();
+	var mensaje = "";
+	var sCita = document.getElementById("txtCitaMat").value.trim();
+	var iCod = document.getElementById("txtIDMat").value.trim();
+	
+	var oAsginarMaterial = new AsMaterial(sCita,iCod);
+	
+	mensaje = oBrico.asignarMaterial(oAsginarMaterial);
+	alert(mensaje);
 	
 }
 
@@ -166,6 +175,7 @@ function altaCita(){
 	if (oBrico.citas.length>iNumCitas)
 		cancelar();
 }
+
 
 //Listados
 function listadoClientes(){
@@ -728,15 +738,16 @@ function validarAsignarMaterial(oEvento) {
 	
 	//Validar Cita de Asignar Material
 	var sCita = frmAsignarMaterial.txtCitaMat.value.trim();
-    var oExpReg = /^[0-9\s]{1,9}$/;
+    var oExpReg = /^[a-zA-Z]{3}\d{3}$/;
 
     if (oExpReg.test(sCita) == false) {
         bValido = false;
 
         frmAsignarMaterial.txtCitaMat.classList.add("error");
         frmAsignarMaterial.txtCitaMat.focus();
-        sError += "\n La cita debe ser numérico entre 1 y 9 digitos.";
+        sError += "\n El Codigo debe empezar por 3 vocales seguido de 3 digitos.";
     }
+	
 	
     if (bValido == false) {
         // Mostrar errores

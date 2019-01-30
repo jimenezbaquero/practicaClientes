@@ -90,6 +90,17 @@ Brico.prototype.altaCita = function(oCita){
 	return sRespuesta;
 }
 
+Brico.prototype.asignarMaterial = function(oAsignarMaterial){
+
+	var sRespuesta = "No se ha podido Asignar el material";
+	if(this.buscarMaterial(oAsignarMaterial.ID)==null){
+		this.material.push(oAsignarMaterial);
+		sRespuesta = "Material asignado satisfactoriamente"; 	
+	}
+	return sRespuesta;
+}
+
+
 //para el listado de citas en un periodo
 Brico.prototype.listadoCitasPeriodo = function(dFechaInicio,dFechaFin){
 	
@@ -151,6 +162,16 @@ class Material{
 		this.descripcion = sDescripcion;
 	}
 }
+
+class AsMaterial{
+	constructor(sCita,iCod){
+		this.cita = sCita;
+		this.cod = iCod;
+		
+	}
+}
+
+
 
 
 class Incidencia{
