@@ -128,10 +128,26 @@ function asignarMaterial(){
 
 function asignarOperario(){
 	validarAsignarOperario();
+	var mensaje = "";
+	var sCita = document.getElementById("txtCitaOp").value.trim();
+	var sDni= document.getElementById("txtOperarioOp").value.trim();
+	
+	var oAsginarOperario = new AsOperario(sCita,sDni);
+	
+	mensaje = oBrico.asignarOperario(oAsginarOperario);
+	alert(mensaje);
 }
 
 function asignarAdmin(){
 	validarAsignarAdmin();
+	var mensaje = "";
+	var sCita = document.getElementById("txtCitaOp").value.trim();
+	var sDni= document.getElementById("txtOperarioOp").value.trim();
+	
+	var oAsginarAdmin = new AsAdmin(sCita,iCod);
+	
+	mensaje = oBrico.asignarAdmin(oAsginarAdmin);
+	alert(mensaje);
 }
 
 function altaOperario(){

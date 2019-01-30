@@ -89,7 +89,7 @@ Brico.prototype.altaCita = function(oCita){
 	}
 	return sRespuesta;
 }
-
+/*
 Brico.prototype.asignarMaterial = function(oAsignarMaterial){
 
 	var sRespuesta = "No se ha podido Asignar el material";
@@ -100,6 +100,26 @@ Brico.prototype.asignarMaterial = function(oAsignarMaterial){
 	return sRespuesta;
 }
 
+Brico.prototype.asignarOperario = function(oAsignarOperario){
+
+	var sRespuesta = "No se ha podido Asignar el Operario";
+	if(this.buscarMaterial(oAsignarOperario.ID)==null){
+		this.operario.push(oAsignarOperario);
+		sRespuesta = "Operario asignado satisfactoriamente"; 	
+	}
+	return sRespuesta;
+}
+
+Brico.prototype.asignarAdmin = function(oAsginarAdmin){
+
+	var sRespuesta = "No se ha podido Asignar el Operario";
+	if(this.buscarMaterial(oAsginarAdmin.ID)==null){
+		this.operario.push(oAsginarAdmin);
+		sRespuesta = "Operario asignado satisfactoriamente"; 	
+	}
+	return sRespuesta;
+}
+*/
 class Cliente{
 	constructor(sNIF,sNombre,sDireccion,iTelefono) {
 		this.NIF = sNIF;
@@ -178,6 +198,22 @@ class AsMaterial{
 	constructor(sCita,iCod){
 		this.cita = sCita;
 		this.cod = iCod;
+		
+	}
+}
+
+class AsOperario{
+	constructor(sCita,iCod){
+		this.cita = sCita;
+		this.dni = sDni;
+		
+	}
+}
+
+class AsAdmin{
+	constructor(sCita,iCod){
+		this.cita = sCita;
+		this.dni = sDni;
 		
 	}
 }
