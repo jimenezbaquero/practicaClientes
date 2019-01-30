@@ -30,7 +30,6 @@ Brico.prototype.buscar = function(sNIF,lista){
 
 Brico.prototype.altaCliente = function(oCliente){
 
-	var sRespuesta = "Ya existe un cliente con ese NIF en la base de datos";
 	var sRespuesta = "Ya existe un cliente con ese NIF en la base de datos ";
 	if(this.buscar(oCliente.NIF,this.clientes)==null){
 		this.clientes.push(oCliente);
