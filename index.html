@@ -28,9 +28,7 @@
             <li class="nav-item dropdown mr-md-4 mr-lg-5">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkMod" name="navbarDropdownMenuLinkMod" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modificar</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkMod">
-                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioCliente" name="formularioClienteMod">Cliente</a>
-                <a class="dropdown-item" href="#" id="formularioOperarioMod" name="formularioOperarioMod">Operario</a>
-                <a class="dropdown-item" href="#" id="formularioAdministrativoMod" name="formularioAdministrativoMod">Administrativo</a>
+                <a class="dropdown-item dropdown-item-ligth" href="#" id="formularioClienteMod" name="formularioClienteMod">Cliente</a>
                 <a class="dropdown-item" href="#" id="formularioMaterialMod" name="formularioMaterialMod">Material</a>
                 <a class="dropdown-item" href="#" id="formularioCitaMod" name="formularioCitaMod">Cita</a>
               </div>
@@ -84,6 +82,7 @@
 
       <div class="row col-12" id="divFrmCliente">
         <form class="col-12" method="post" id="frmAltaCliente">
+          <h1>Alta de Cliente</h1>
           <div id="camposCliente">
             <div class="form-group row align-items-center">
               <label class="control-label col-md-2 " for="txtDniCli">DNI:</label>
@@ -122,6 +121,7 @@
 
       <div class="row col-12" id="divFrmOperario">
         <form class="col-12" method="post" id="frmAltaOperario">
+          <h1>Alta de Operario</h1>
           <div id="camposOperario">
             <div class="form-group row align-items-center">
               <label class="control-label col-md-2 " for="txtDniOp">DNI:</label>
@@ -148,6 +148,7 @@
 
       <div class="row col-12" id="divFrmAdministrativo">
         <form class="col-12" method="post" id="frmAltaAdministrativo">
+          <h1>Alta de Administrativo</h1>
           <div id="camposAdministrativo">
             <div class="form-group row align-items-center">
               <label class="control-label col-md-2 " for="txtDniAdm">DNI:</label>
@@ -174,6 +175,7 @@
 
       <div class="row col-12" id="divFrmIncidencia">
         <form class="col-12" method="post" id="frmAltaIncidencia">
+          <h1>Asignar Incidencia</h1>
           <div id="camposIncidencias">
             <div class="form-group row align-items-center">
               <label class="control-label col-md-2 " for="txtCitaInc">CITA Nº:</label>
@@ -202,6 +204,7 @@
 
       <div class="row col-12" id="divFrmMaterial">
         <form class="col-12" method="post" id="frmAltaMaterial">
+          <h1>Alta de Material</h1>
           <div id="camposMaterial">
             <div class="form-group row align-items-center">
               <label class="control-label col-md-2 " for="txtCodMat">CODIGO:</label>
@@ -241,6 +244,7 @@
 
   <div class="row col-12" id="divFrmCita">
     <form class="col-12" method="post" id="frmCita">
+      <h1>Creación de una Cita</h1>
       <div id="camposCita">
         <div class="form-group row align-items-center">
           <label class="control-label col-md-2 " for="txtNumCita">Nº CITA:</label>
@@ -279,6 +283,7 @@
 
   <div class="row col-12" id="divFrmAsignarMaterial">
     <form class="col-12" method="post" id="frmAsignarMaterial">
+      <h1>Asignar Material</h1>
       <div id="camposAsignarMaterial">
         <div class="form-group row align-items-center">
           <label class="control-label col-md-2 " for="txtCitaMat">CITA Nº:</label>
@@ -305,6 +310,7 @@
 
   <div class="row col-12" id="divFrmAsignarOperario">
     <form class="col-12" method="post" id="frmAsignarOperario">
+      <h1>Asignar Operario</h1>
       <div id="camposAsignarOperario">
         <div class="form-group row align-items-center">
           <label class="control-label col-md-2 " for="txtCitaOp">CITA Nº:</label>
@@ -332,6 +338,7 @@
 
   <div class="row col-12" id="divFrmAsignarAdmin">
     <form class="col-12" method="post" id="frmAsignarAdmin">
+      <h1>Asignar Administrativo</h1>
       <div id="camposAsignarAdmin">
         <div class="form-group row align-items-center">
           <label class="control-label col-md-2 " for="txtCitaAd">CITA Nº:</label>
@@ -352,6 +359,225 @@
           <input type="button" id="btnAceptarAsignarAdmin" name="btnAceptarAsignarAdmin" class="btn btn-primary " value="Aceptar"/>
           <input type="button" id="btnBorrarAsignarAdmin" name="btnBorrarAsignarAdmin" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
           <input type="button" id="btnCancelarAsignarAdmin" name="btnCancelarAsignarAdmin" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+   <div class="row col-12" id="divFrmModificarCliente">
+    <form class="col-12" method="post" id="frmModificarCliente">
+      <h1>Modificar Datos Cliente</h1>
+      <div id="camposModificarCliente">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtModificarCliente">CLIENTE:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtModificarCliente" name="txtModificarCliente" placeholder="12345678X" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarModificarCliente" name="btnAceptaModificarCliente" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarModificarCliente" name="btnBorrarModificarCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarModificarCliente" name="btnCancelarModificarCliente" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+ <div class="row col-12" id="divFrmModificarDatosCliente">
+        <form class="col-12" method="post" id="frmModificarDatosCliente">
+          <h1>Modificar Datos Cliente</h1>
+          <div id="camposModificarDatosCliente">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDniModificarDatosCliente">DNI:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDniModificarDatosCliente" name="txtDniModificarDatosCliente" placeholder="12345678X" type="text" disabled>
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtNombreModificarDatosCliente">NOMBRE:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtNombreModificarDatosCliente" name="txtNombreModificarDatosCliente" placeholder="Nombre" type="text">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDireccionModificarDatosCliente">DIRECCION:</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" id="txtDireccionModificarDatosCliente" name="txtDireccionModificarDatosCliente" placeholder="Direccion">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtTfnoModificarDatosCliente">TELEFONO:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtTfnoModificarDatosCliente" name="txtTfnoModificarDatosCliente" placeholder="666666666" type="text"/>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarModificarDatosCliente" name="btnAceptarModificarDatosCliente" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnModificarDatosCliente" name="btnModificarDatosCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarModificarDatosCliente" name="btnCancelarModificarDatosCliente" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
+   <div class="row col-12" id="divFrmModificarCita">
+    <form class="col-12" method="post" id="frmModificarCita">
+      <h1>Modificar Datos Cita</h1>
+      <div id="camposModificarCita">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtModificarCita">Nº CITA:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtModificarCita" name="txtModificarCita" placeholder="1" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarModificarCita" name="btnAceptaModificarCita" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarModificarCita" name="btnBorrarModificarCita" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarModificarCita" name="btnCancelarModificarCita" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+     <div class="row col-12" id="divFrmModificarMaterial">
+    <form class="col-12" method="post" id="frmModificarMaterial">
+      <h1>Modificar Datos Material</h1>
+      <div id="camposModificarMaterial">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtModificarMaterial">CÓDIGO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtModificarMaterial" name="txtModificarMaterial" placeholder="ABC123" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarModificarMaterial" name="btnAceptaModificarMaterial" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarModificarMaterial" name="btnBorrarModificarMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarModificarMaterial" name="btnCancelarModificarMaterial" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+   <div class="row col-12" id="divFrmBorrarCliente">
+    <form class="col-12" method="post" id="frmBorrarCliente">
+      <h1>Baja Cliente</h1>
+      <div id="camposBorrarCliente">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtBorrarCliente">CLIENTE:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtBorrarCliente" name="txtBorrarCliente" placeholder="12345678X" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarBorrarCliente" name="btnAceptaBorrarCliente" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarBorrarCliente" name="btnBorrarBorrarCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarBorrarCliente" name="btnCancelarBorrarCliente" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+     <div class="row col-12" id="divFrmBorrarOperario">
+    <form class="col-12" method="post" id="frmBorrarOperario">
+      <h1>Baja Operario</h1>
+      <div id="camposBorrarOperario">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtBorrarOperario">OPERARIO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtBorrarOperario" name="txtBorrarOperario" placeholder="12345678X" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarBorrarOperario" name="btnAceptaBorrarOperario" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarBorrarOperario" name="btnBorrarBorrarOperario" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarBorrarOperario" name="btnCancelarBorrarOperario" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+     <div class="row col-12" id="divFrmBorrarAdmin">
+    <form class="col-12" method="post" id="frmBorrarAdmin">
+      <h1>Baja Administrativo</h1>
+      <div id="camposBorrarAdmin">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtBorrarAdmin">ADMINISTRATIVO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtBorrarAdmin" name="txtBorrarAdmin" placeholder="12345678X" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarBorrarAdmin" name="btnAceptaBorrarAdmin" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarBorrarAdmin" name="btnBorrarBorrarAdmin" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarBorrarAdmin" name="btnCancelarBorrarAdmin" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+   <div class="row col-12" id="divFrmBorrarCita">
+    <form class="col-12" method="post" id="frmBorrarCita">
+      <h1>Baja Cita</h1>
+      <div id="camposBorrarCita">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtBorrarCita">Nº CITA:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtBorrarCita" name="txtBorrarCita" placeholder="1" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarBorrarCita" name="btnAceptaBorrarCita" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarBorrarCita" name="btnBorrarBorrarCita" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarBorrarCita" name="btnCancelarBorrarCita" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+     <div class="row col-12" id="divFrmBorrarMaterial">
+    <form class="col-12" method="post" id="frmBorrarMaterial">
+      <h1>Baja Material</h1>
+      <div id="camposBorrarMaterial">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtBorrarMaterial">CÓDIGO:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtBorrarCita" name="txtBorrarCita" placeholder="ABC123" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarBorrarMaterial" name="btnAceptaBorrarMaterial" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarBorrarMaterial" name="btnBorrarBorrarMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarBorrarMaterial" name="btnCancelarBorrarMaterial" class="btn btn-danger" value="Cancelar"/>
         </div>
       </div>
     </form>

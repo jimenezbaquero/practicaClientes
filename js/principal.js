@@ -56,6 +56,23 @@ document.getElementById("formularioAsignarIncidencia").addEventListener("click",
 document.getElementById("btnAceptarAsignarAdmin").addEventListener("click",asignarAdmin,false);
 document.getElementById("btnBorrarAsignarAdmin").addEventListener("click",borrarCamposAsignarAdmin,false);
 document.getElementById("btnCancelarAsignarAdmin").addEventListener("click",cancelar,false);
+document.getElementById("formularioClienteMod").addEventListener("click",mostrarFormularioModificarCliente,false);
+document.getElementById("formularioCitaMod").addEventListener("click",mostrarFormularioModificarCita,false);
+document.getElementById("formularioMaterialMod").addEventListener("click",mostrarFormularioModificarMaterial,false);
+document.getElementById("btnAceptarModificarCliente").addEventListener("click",mostrarFormularioModificarDatosCliente,false);
+document.getElementById("btnBorrarModificarCliente").addEventListener("click",borrarCamposModificarCliente,false);
+document.getElementById("btnCancelarModificarCliente").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarModificarCita").addEventListener("click",mostrarFormularioModificarCita,false);
+document.getElementById("btnBorrarModificarCita").addEventListener("click",borrarCamposModificarCita,false);
+document.getElementById("btnCancelarModificarCita").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarModificarMaterial").addEventListener("click",mostrarFormularioModificarMaterial,false);
+document.getElementById("btnBorrarModificarMaterial").addEventListener("click",borrarCamposModificarMaterial,false);
+document.getElementById("btnCancelarModificarMaterial").addEventListener("click",cancelar,false);
+document.getElementById("formularioMaterialBor").addEventListener("click",mostrarFormularioBorrarMaterial,false);
+document.getElementById("formularioClienteBor").addEventListener("click",mostrarFormularioBorrarCliente,false);
+document.getElementById("formularioCitaBor").addEventListener("click",mostrarFormularioBorrarCita,false);
+document.getElementById("formularioOperarioBor").addEventListener("click",mostrarFormularioBorrarOperario,false);
+document.getElementById("formularioAdministrativoBor").addEventListener("click",mostrarFormularioBorrarAdministrativo,false);
 
 
 //Validacion de formularios
@@ -320,6 +337,64 @@ function mostrarFormularioAsignarAdministrativo(){
 	document.getElementById("divFrmAsignarAdmin").style.display = "block";
 }
 
+function mostrarFormularioModificarCliente(){
+	ocultarCapas();
+	document.getElementById("divFrmModificarCliente").style.display = "block";
+}
+
+function mostrarFormularioModificarMaterial(){
+	ocultarCapas();
+	document.getElementById("divFrmModificarMaterial").style.display = "block";
+}
+
+function mostrarFormularioModificarCita(){
+	ocultarCapas();
+	document.getElementById("divFrmModificarCita").style.display = "block";
+}
+
+function mostrarFormularioBorrarAdministrativo(){
+	ocultarCapas();
+	document.getElementById("divFrmBorrarAdmin").style.display = "block";
+}
+
+function mostrarFormularioBorrarCliente(){
+	ocultarCapas();
+	document.getElementById("divFrmBorrarCliente").style.display = "block";
+}
+
+function mostrarFormularioBorrarCita(){
+	ocultarCapas();
+	document.getElementById("divFrmBorrarCita").style.display = "block";
+}
+
+function mostrarFormularioBorrarMaterial(){
+	ocultarCapas();
+	document.getElementById("divFrmBorrarMaterial").style.display = "block";
+}
+
+function mostrarFormularioBorrarOperario(){
+	ocultarCapas();
+	document.getElementById("divFrmBorrarOperario").style.display = "block";
+}
+
+function mostrarFormularioModificarDatosCliente(){
+	var nif = document.getElementById("txtModificarCliente").value;
+	var oCliente = oBrico.buscar(nif,oBrico.clientes);
+	if (oCliente != null){
+		ocultarCapas();
+		document.getElementById("txtDniModificarDatosCliente").value = oCliente.NIF;
+		document.getElementById("txtNombreModificarDatosCliente").value = oCliente.nombre;
+		document.getElementById("txtDireccionModificarDatosCliente").value = oCliente.direccion;
+		document.getElementById("txtTfnoModificarDatosCliente").value = oCliente.telefono;	
+		document.getElementById("divFrmModificarDatosCliente").style.display = "block";
+	}else
+		alert ("El NIF introducido no corresponde a ningún cliente");
+
+	
+}
+
+
+
 function ocultarCapas(){
 	borrarCampos();
 	document.getElementById("divFrmCliente").style.display = "none";
@@ -333,6 +408,18 @@ function ocultarCapas(){
 	document.getElementById("jumbo").style.display = "none";
 	document.getElementById("divFrmIncidencia").style.display = "none";
 	document.getElementById("divFrmAsignarAdmin").style.display = "none";
+	document.getElementById("divFrmModificarMaterial").style.display = "none";
+	document.getElementById("divFrmModificarCliente").style.display = "none";
+	document.getElementById("divFrmModificarCita").style.display = "none";
+	document.getElementById("divFrmBorrarCita").style.display = "none";
+	document.getElementById("divFrmBorrarCliente").style.display = "none";
+	document.getElementById("divFrmBorrarOperario").style.display = "none";
+	document.getElementById("divFrmBorrarAdmin").style.display = "none";
+	document.getElementById("divFrmBorrarMaterial").style.display = "none";
+	document.getElementById("divFrmModificarDatosCliente").style.display = "none";
+	//document.getElementById("divFrmModificarDatosCita").style.display = "block";
+	//document.getElementById("divFrmModificarDatosMaterial").style.display = "block";
+
 }
 
 function cancelar(){
@@ -356,8 +443,21 @@ function borrarCamposMaterial(){
 	frmAltaMaterial.reset();
 }
 
+function borrarCamposModificarMaterial(){
+	frmModificarMaterial.reset();
+}
+
+function borrarCamposModificarCita(){
+	frmModificarCita.reset();
+}
+
+function borrarCamposModificarCliente(){
+	frmModificarCliente.reset();
+}
+
 function borrarCamposCita(){
 	frmCita.reset();
+	document.getElementById("txtNumCita").value = oBrico.iNumCita;
 }
 
 function borrarCamposAsignarMaterial(){
