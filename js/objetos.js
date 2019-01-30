@@ -100,20 +100,28 @@ Brico.prototype.asignarMaterial = function(oAsignarMaterial){
 	return sRespuesta;
 }
 
-
-//para el listado de citas en un periodo
-Brico.prototype.listadoCitasPeriodo = function(dFechaInicio,dFechaFin){
-	
-}
-
-
-
 class Cliente{
 	constructor(sNIF,sNombre,sDireccion,iTelefono) {
 		this.NIF = sNIF;
 		this.nombre = sNombre ;
 		this.direccion = sDireccion;
 		this.telefono = iTelefono ;
+	}
+
+	getNif(){
+		return this.NIF;
+	}
+
+	getNombre(){
+		return this.nombre;
+	}
+	
+	getDireccion(){
+		return this.direccion;
+	}
+	
+	getTelefono(){
+		return this.telefono;
 	}
 }	
 
@@ -152,6 +160,9 @@ class Cita{
 	getCliente(){
 		return this.cliente;
 	}
+	getDescripcion(){
+		return this.descripcion;
+	}
 }
 
 class Material{
@@ -170,9 +181,6 @@ class AsMaterial{
 		
 	}
 }
-
-
-
 
 class Incidencia{
 	constructor(sID,sDescripcion){

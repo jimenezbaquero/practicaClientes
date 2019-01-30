@@ -3,14 +3,16 @@ var oBrico = new Brico();
 
 //datos
 oBrico.altaCliente(new Cliente ("12345678X","Manuel","Cuenca 24","666666666"));
+oBrico.altaCliente(new Cliente ("11111111X","Ale","Sevilla 24","555555555"));
+oBrico.altaCliente(new Cliente ("88888888X","Alvaro","Luna 24","222222222"));
 
 oBrico.altaOperario(new Operario("12345678A","Alvaro"));
 oBrico.altaOperario(new Operario("87654321A","Jose"));
 oBrico.altaOperario(new Operario("11111111A","Ana"));
 
-oBrico.altaCita(new Cita("1","01/01/2017","12345678A",""));
-oBrico.altaCita(new Cita("2","01/01/2016","87654321A",""));
-oBrico.altaCita(new Cita("3","01/01/2018","11111111A",""));
+oBrico.altaCita(new Cita(1,new Date("2017/01/01"),"12345678X","tuberias"));
+oBrico.altaCita(new Cita(2,new Date("2018/01/01"),"11111111X","pintura"));
+oBrico.altaCita(new Cita(3,new Date("2019/01/01"),"88888888X","fregadero"));
 
 // programa principal
 ocultarCapas();
@@ -74,7 +76,6 @@ document.getElementById("formularioCitaBor").addEventListener("click",mostrarFor
 document.getElementById("formularioOperarioBor").addEventListener("click",mostrarFormularioBorrarOperario,false);
 document.getElementById("formularioAdministrativoBor").addEventListener("click",mostrarFormularioBorrarAdministrativo,false);
 
-
 //Validacion de formularios
 function hayCamposVacios(divCampo){
 	var array = divCampo.getElementsByTagName("input");
@@ -123,7 +124,6 @@ function asignarMaterial(){
 	
 	mensaje = oBrico.asignarMaterial(oAsginarMaterial);
 	alert(mensaje);
-	
 }
 
 function asignarOperario(){
@@ -133,7 +133,6 @@ function asignarOperario(){
 function asignarAdmin(){
 	validarAsignarAdmin();
 }
-
 
 function altaOperario(){
 	validarOperario();
@@ -176,15 +175,14 @@ function altaCita(){
 		cancelar();
 }
 
-
 //Listados
 function listadoClientes(){
-	alert("Listado clientes");
-}
-
-function listadoOperarios(){
 	var oVentana = open("","_blank");
-	oVentana.document.title = "Listado de operarios";
+	oVentana.document.title = "Listado Clientes";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de clientes";
+	oVentana.document.body.appendChild(oTitulo);
 
 	var oTabla = document.createElement("table");
         oTabla.border = "1";
@@ -198,7 +196,54 @@ function listadoOperarios(){
         oCelda = document.createElement("TH");
         oCelda.textContent = "NOMBRE";
         oFila.appendChild(oCelda);
-        
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "DIRECCION";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "TELEFONO";
+        oFila.appendChild(oCelda);
+	
+	var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+	for (let i=0;i<oBrico.clientes.length;i++)
+	{
+		oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.clientes[i].getNif();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.clientes[i].getNombre();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.clientes[i].getDireccion();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.clientes[i].getTelefono();
+    }    
+	
+	oVentana.document.body.appendChild(oTabla);
+	ocultarCapas();
+	mostrarJumbotron();
+}
+
+function listadoOperarios(){
+	var oVentana = open("","_blank");
+	oVentana.document.title = "Listado Operarios";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de operarios";
+	oVentana.document.body.appendChild(oTitulo);
+
+	var oTabla = document.createElement("table");
+        oTabla.border = "1";
+
+        // THEAD
+        var oTHead = oTabla.createTHead();
+        var oFila = oTHead.insertRow(-1);
+        var oCelda = document.createElement("TH");
+        oCelda.textContent = "DNI";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "NOMBRE";
+        oFila.appendChild(oCelda);
 	
 	var oTBody = document.createElement("TBODY");
     oTabla.appendChild(oTBody);
@@ -210,18 +255,20 @@ function listadoOperarios(){
         oCelda.textContent = oBrico.operarios[i].getNif();
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.operarios[i].getNombre();
-
     }    
 	
 	oVentana.document.body.appendChild(oTabla);
 	ocultarCapas();
 	mostrarJumbotron();
-
 }
 
 function listadoTodasCitas(){
 	var oVentana = open("","_blank");
-	oVentana.document.title = "Listado de citas";
+	oVentana.document.title = "Listado Citas";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de todas las citas";
+	oVentana.document.body.appendChild(oTitulo);
 
 	var oTabla = document.createElement("table");
         oTabla.border = "1";
@@ -238,6 +285,9 @@ function listadoTodasCitas(){
         oCelda = document.createElement("TH");
         oCelda.textContent = "CLIENTE";
         oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "DESCRIPCION";
+        oFila.appendChild(oCelda);
         
 	
 	var oTBody = document.createElement("TBODY");
@@ -249,10 +299,11 @@ function listadoTodasCitas(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getFecha();
+        oCelda.textContent = oBrico.citas[i].getFecha().toLocaleDateString();
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getCliente();
-
+		oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.citas[i].getDescripcion();
     }    
 	
 	oVentana.document.body.appendChild(oTabla);
@@ -261,34 +312,62 @@ function listadoTodasCitas(){
 }
 
 function listadoCitas(){
+	validarListadoFechas();
 	var sFechaInicial = "";
 	var sFechaFinal = "";
 	var oVentana = null;
-	var dFechaInicio = null;
-	var dFechaFin = null;
+	var dFechaInicio = new Date (document.getElementById("txtFechaInicioCitasPer").value);
+	var dFechaFin = new Date (document.getElementById("txtFechaFinCitasPer").value);
+	
+	var citasPeriodo = obtenerCitas(dFechaInicio,dFechaFin);
+	
+	cancelar();
+	oVentana = open("","_blank");
+	oVentana.document.title = "Listado Citas";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de Citas entre "+dFechaInicio.toLocaleDateString()+" y "+dFechaFin.toLocaleDateString();
+	oVentana.document.body.appendChild(oTitulo);
+	
+	var oTabla = document.createElement("table");
+        oTabla.border = "1";
 
-	if (hayCamposVacios(camposFechasCitas))
-		alert("Debe rellenar todos los campos");
-	else{
-		sFechaInicial = txtFechaInicioCitas.value;
-		sFechaFinal = txtFechaFinCitas.value;
-		if (fechaValida(sFechaInicial)&&fechaValida(sFechaFinal))
-		{
-			if(sFechaInicial<=sFechaFinal)
-			{
-				cancelar();
-				dFechaInicio = crearFecha(sFechaInicial);
-				dFechaFin = crearFecha(sFechaFinal);
-				oVentana = open("","_blank");
-				oVentana.document.title = "Listado Citas";
-				oVentana.document.body.innerHTML = "<h1>Listado de Citas entre "+sFechaInicial+" y "+sFechaFinal+"</h1>"+oBrico.listadoCitasPeriodo(dFechaInicio,dFechaFin);
-			}
-			else
-				alert("La primera fecha debe ser menor que la segunda");
-		}
-		else 
-			alert ("Hay alguna fecha no válida");	
-	}
+        // THEAD
+        var oTHead = oTabla.createTHead();
+        var oFila = oTHead.insertRow(-1);
+        var oCelda = document.createElement("TH");
+        oCelda.textContent = "Nº CITA";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "FECHA";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "CLIENTE";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "DESCRIPCION";
+        oFila.appendChild(oCelda);
+	
+		var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+	for (let i=0;i<citasPeriodo.length;i++)
+	{
+		oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.citas[i].getID();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.citas[i].getFecha().toLocaleDateString();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.citas[i].getCliente();
+		oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.citas[i].getDescripcion();
+    }    
+}
+
+function obtenerCitas(fechaI, fechaF){
+	var array = oBrico.citas.filter(n=>(n.fecha>=fechaI && n.fecha <=fechaF));
+	return array;
 }
 
 //Funciones para el tratamiento de capas
@@ -400,11 +479,7 @@ function mostrarFormularioModificarDatosCliente(){
 		document.getElementById("divFrmModificarDatosCliente").style.display = "block";
 	}else
 		alert ("El NIF introducido no corresponde a ningún cliente");
-
-	
 }
-
-
 
 function ocultarCapas(){
 	borrarCampos();
@@ -535,7 +610,6 @@ function validarOperario(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -578,7 +652,6 @@ function validarAdministrativo(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -634,7 +707,6 @@ function validarCrearCita(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -710,7 +782,6 @@ function validarCliente(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -755,11 +826,9 @@ function validarAsignarMaterial(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
-
 
 //Validar Asignar Operario
 function validarAsignarOperario(oEvento) {
@@ -801,7 +870,6 @@ function validarAsignarOperario(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -846,7 +914,6 @@ function validarAsignarAdmin(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
 }
@@ -911,9 +978,22 @@ function validarAltaMaterial(oEvento) {
 
         //Cancelar submit
         oE.preventDefault();
-
     }
 
+}
+
+function validarListadoFechas(){
+	sFechaInicial=document.getElementById("txtFechaInicioCitasPer").value;
+	sFechaFinal=document.getElementById("txtFechaFinCitasPer").value;
+	
+	if(sFechaFinal<sFechaInicial)
+	{
+		document.getElementById("txtFechaFinCitasPer").classList.add("error");
+        document.getElementById("txtFechaFinCitasPer").focus();
+		alert("La fecha final debe ser mayor que la inicial.");
+		    //Cancelar submit
+        oE.preventDefault();
+	}
 }
 
 function limpiarErrores() {
@@ -929,7 +1009,6 @@ function limpiarErrores() {
 	frmAltaMaterial.txtNombreMat.classList.remove("error");
 	frmAltaMaterial.txtPrecioMat.classList.remove("error");
 	frmAltaMaterial.txtDescripcionMat.classList.remove("error");
-   
 }
 
 //Funcion para salir de la aplicacion
