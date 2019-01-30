@@ -90,12 +90,15 @@ Brico.prototype.altaCita = function(oCita){
 	return sRespuesta;
 }
 
-//para el listado de citas en un periodo
-Brico.prototype.listadoCitasPeriodo = function(dFechaInicio,dFechaFin){
-	
+Brico.prototype.asignarMaterial = function(oAsignarMaterial){
+
+	var sRespuesta = "No se ha podido Asignar el material";
+	if(this.buscarMaterial(oAsignarMaterial.ID)==null){
+		this.material.push(oAsignarMaterial);
+		sRespuesta = "Material asignado satisfactoriamente"; 	
+	}
+	return sRespuesta;
 }
-
-
 
 class Cliente{
 	constructor(sNIF,sNombre,sDireccion,iTelefono) {
@@ -103,6 +106,22 @@ class Cliente{
 		this.nombre = sNombre ;
 		this.direccion = sDireccion;
 		this.telefono = iTelefono ;
+	}
+
+	getNif(){
+		return this.NIF;
+	}
+
+	getNombre(){
+		return this.nombre;
+	}
+	
+	getDireccion(){
+		return this.direccion;
+	}
+	
+	getTelefono(){
+		return this.telefono;
 	}
 }	
 
@@ -141,6 +160,9 @@ class Cita{
 	getCliente(){
 		return this.cliente;
 	}
+	getDescripcion(){
+		return this.descripcion;
+	}
 }
 
 class Material{
@@ -152,6 +174,13 @@ class Material{
 	}
 }
 
+class AsMaterial{
+	constructor(sCita,iCod){
+		this.cita = sCita;
+		this.cod = iCod;
+		
+	}
+}
 
 class Incidencia{
 	constructor(sID,sDescripcion){
