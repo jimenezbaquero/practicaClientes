@@ -119,12 +119,23 @@ function altaMaterial(){
 function asignarMaterial(){
 	validarAsignarMaterial();
 	var mensaje = "";
-	var sCita = document.getElementById("txtCitaMat").value.trim();
-	var iCod = document.getElementById("txtIDMat").value.trim();
+	var sCita = document.getElementById("txtCitaMatAs").value.trim();
+	var iCod = document.getElementById("txtIDMatAs").value.trim();
 	
-	var oAsginarMaterial = new AsMaterial(sCita,iCod);
-	
-	mensaje = oBrico.asignarMaterial(oAsginarMaterial);
+	var oCita = oBrico.buscarCita(sCita);
+	var oMaterial= oBrico.buscarMaterial(iCod);
+	if (oCita == null)
+		mensaje+="La cita no existe ";
+	else
+		if (oMaterial==null)
+			mensaje += "El material no existe";
+		else
+			if(oCita.materiales.includes(oMaterial))
+				mensaje += "El material ya ha sido asignado";
+			else{
+				oCita.materiales.push(iCod);
+				mensaje = "Material asignado Correctamente";
+			}
 	alert(mensaje);
 }
 
@@ -132,23 +143,45 @@ function asignarOperario(){
 	validarAsignarOperario();
 	var mensaje = "";
 	var sCita = document.getElementById("txtCitaOp").value.trim();
-	var sDni= document.getElementById("txtOperarioOp").value.trim();
+	var sDni = document.getElementById("txtOperarioOp").value.trim();
 	
-	var oAsginarOperario = new AsOperario(sCita,sDni);
-	
-	mensaje = oBrico.asignarOperario(oAsginarOperario);
+	var oCita = oBrico.buscarCita(sCita);
+	var oOperario= oBrico.buscar(sDni,oBrico.operarios);
+	if (oCita == null)
+		mensaje+="La cita no existe ";
+	else
+		if (oOperario==null)
+			mensaje += "El Operario no existe";
+		else
+			if(oCita.operarios.includes(oOperario))
+				mensaje += "El Operario ya ha sido asignado";
+			else{
+				oCita.operarios.push(sDni);
+				mensaje = "Operario asignado Correctamente";
+			}
 	alert(mensaje);
 }
 
 function asignarAdmin(){
 	validarAsignarAdmin();
 	var mensaje = "";
-	var sCita = document.getElementById("txtCitaOp").value.trim();
-	var sDni= document.getElementById("txtOperarioOp").value.trim();
+	var sCita = document.getElementById("txtCitaAd").value.trim();
+	var sDni = document.getElementById("txtAdminAd").value.trim();
 	
-	var oAsginarAdmin = new AsAdmin(sCita,iCod);
-	
-	mensaje = oBrico.asignarAdmin(oAsginarAdmin);
+	var oCita = oBrico.buscarCita(sCita);
+	var oAdministrativo= oBrico.buscar(sDni,oBrico.administrativos);
+	if (oCita == null)
+		mensaje+="La cita no existe ";
+	else
+		if (oAdministrativo==null)
+			mensaje += "El Administrativo no existe";
+		else
+			if(oCita.administrativos.includes(oAdministrativo))
+				mensaje += "El Administrativo ya ha sido asignado";
+			else{
+				oCita.administrativos.push(oAdministrativo);
+				mensaje = "Administrativo asignado Correctamente";
+			}
 	alert(mensaje);
 }
 
@@ -945,30 +978,31 @@ function validarAsignarMaterial(oEvento) {
     limpiarErrores();
 
 	//Validar ID de Asignar Material
-	var sID = frmAsignarMaterial.txtIDMat.value.trim();
+	var sID = frmAsignarMaterial.txtCitaMatAs.value.trim();
     var oExpReg = /^[0-9\s]{1,9}$/;
 
     if (oExpReg.test(sID) == false) {
         bValido = false;
-
-        frmAsignarMaterial.txtIDMat.classList.add("error");
-        frmAsignarMaterial.txtIDMat.focus();
+		
+        frmAsignarMaterial.txtCitaMatAs.classList.add("error");
+        frmAsignarMaterial.txtCitaMatAs.focus();
         sError += " El ID debe ser numérico entre 1 y 9 digitos.";
     }
 	
+
+	
 	//Validar Cita de Asignar Material
-	var sCita = frmAsignarMaterial.txtCitaMat.value.trim();
+	var sCita = frmAsignarMaterial.txtIDMatAs.value.trim();
     var oExpReg = /^[a-zA-Z]{3}\d{3}$/;
 
     if (oExpReg.test(sCita) == false) {
         bValido = false;
 
-        frmAsignarMaterial.txtCitaMat.classList.add("error");
-        frmAsignarMaterial.txtCitaMat.focus();
+        frmAsignarMaterial.txtIDMatAs.classList.add("error");
+        frmAsignarMaterial.txtIDMatAs.focus();
         sError += "\n El Codigo debe empezar por 3 vocales seguido de 3 digitos.";
     }
-	
-	
+
     if (bValido == false) {
         // Mostrar errores
         alert(sError);
