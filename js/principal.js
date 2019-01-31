@@ -3,8 +3,8 @@ var oBrico = new Brico();
 
 //datos
 oBrico.altaCliente(new Cliente ("12345678X","Manuel","Cuenca 24","666666666"));
-oBrico.altaCliente(new Cliente ("11111111X","Ale","Sevilla 24","555555555"));
-oBrico.altaCliente(new Cliente ("88888888X","Alvaro","Luna 24","222222222"));
+oBrico.altaCliente(new Cliente ("11111111X","Ale","Sevilla 24","655555555"));
+oBrico.altaCliente(new Cliente ("88888888X","Alvaro","Luna 24","622222222"));
 
 oBrico.altaOperario(new Operario("12345678A","Alvaro"));
 oBrico.altaOperario(new Operario("87654321A","Jose"));
@@ -15,6 +15,8 @@ oBrico.altaCita(new Cita(2,new Date("2018/01/01"),"11111111X","pintura"));
 oBrico.altaCita(new Cita(3,new Date("2019/01/01"),"88888888X","fregadero"));
 
 oBrico.altaMaterial(new Material("1","Ladrillo","15.5","Grandes"));
+
+oBrico.altaAdministrativo(new Administrativo("77777777A","Carlos"));
 
 // programa principal
 ocultarCapas();
@@ -509,6 +511,11 @@ function listadoMateriales(){
 }
 
 function listadoCitasCliente(){
+	validarlistarCitasClientes();
+		
+	if (oBrico.buscar(txtDniCitaCli.value,oBrico.clientes)!=null){
+	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=txtDniCitaCli.value));		
+	
 	var oVentana = null;
 	var sCliente = document.getElementById("txtDniCitaCli").value;
 	
@@ -555,6 +562,11 @@ function listadoCitasCliente(){
     oVentana.document.body.appendChild(oTabla);
 	ocultarCapas();
 	mostrarJumbotron();
+	
+		cancelar();
+	}
+	else
+		alert("No existe un cliente con ese NIF");
 }
 
 function obtenerCitasCliente(sCliente){
@@ -1292,6 +1304,39 @@ function validarAltaMaterial(oEvento) {
     }
 
 }
+
+//validar listar cistas cliente
+function validarlistarCitasClientes(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del cliente
+    var sDNI = frmCitasCliente.txtDniCitaCli.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmCitasCliente.txtDniCitaCli.classList.add("error");
+        frmCitasCliente.txtDniCitaCli.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	
+   
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+
+}
+
 
 function validarListadoFechas(){
 	sFechaInicial=document.getElementById("txtFechaInicioCitasPer").value;
