@@ -10,11 +10,11 @@ oBrico.altaOperario(new Operario("12345678A","Alvaro"));
 oBrico.altaOperario(new Operario("87654321A","Jose"));
 oBrico.altaOperario(new Operario("11111111A","Ana"));
 
-oBrico.altaCita(new Cita(1,new Date("2017/01/01"),"12345678X","tuberias"));
-oBrico.altaCita(new Cita(2,new Date("2018/01/01"),"11111111X","pintura"));
-oBrico.altaCita(new Cita(3,new Date("2019/01/01"),"88888888X","fregadero"));
+oBrico.altaCita(new Cita("1",new Date("2017/01/01"),"12345678X","tuberias"));
+oBrico.altaCita(new Cita("2",new Date("2018/01/01"),"11111111X","pintura"));
+oBrico.altaCita(new Cita("3",new Date("2019/01/01"),"88888888X","fregadero"));
 
-oBrico.altaMaterial(new Material("1","Ladrillo","15.5","Grandes"));
+oBrico.altaMaterial(new Material("ALB001","Ladrillo","15.5","Grandes"));
 
 oBrico.altaAdministrativo(new Administrativo("77777777A","Carlos"));
 
@@ -36,44 +36,44 @@ document.getElementById("listaCitas").addEventListener("click",listadoTodasCitas
 document.getElementById("formularioListadoCitas").addEventListener("click",mostrarFormularioListadoCitas,false);
 document.getElementById("formularioAsignarAdministrativo").addEventListener("click",mostrarFormularioAsignarAdministrativo,false);
 document.getElementById("btnAceptarCliente").addEventListener("click",altaCliente,false);
-document.getElementById("btnBorrarCliente").addEventListener("click",borrarCamposCliente,false);
+document.getElementById("btnBorrarCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarCliente").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarOperario").addEventListener("click",altaOperario,false);
-document.getElementById("btnBorrarOperario").addEventListener("click",borrarCamposOperario,false);
+document.getElementById("btnBorrarOperario").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarOperario").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarAdministrativo").addEventListener("click",altaAdministrativo,false);
-document.getElementById("btnBorrarAdministrativo").addEventListener("click",borrarCamposAdministrativo,false);
+document.getElementById("btnBorrarAdministrativo").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarAdministrativo").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarMaterial").addEventListener("click",altaMaterial,false);
-document.getElementById("btnBorrarMaterial").addEventListener("click",borrarCamposMaterial,false);
+document.getElementById("btnBorrarMaterial").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarMaterial").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarCita").addEventListener("click",altaCita,false);
-document.getElementById("btnBorrarCita").addEventListener("click",borrarCamposCita,false);
+document.getElementById("btnBorrarCita").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarCita").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarAsignarMaterial").addEventListener("click",asignarMaterial,false);
-document.getElementById("btnBorrarAsignarMaterial").addEventListener("click",borrarCamposAsignarMaterial,false);
+document.getElementById("btnBorrarAsignarMaterial").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarAsignarMaterial").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarAsignarOperario").addEventListener("click",asignarOperario,false);
-document.getElementById("btnBorrarAsignarOperario").addEventListener("click",borrarCamposAsignarOperario,false);
+document.getElementById("btnBorrarAsignarOperario").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarAsignarOperario").addEventListener("click",cancelar,false);
 document.getElementById("btnAceptarCitas").addEventListener("click",listadoCitas,false);
-document.getElementById("btnBorrarCitas").addEventListener("click",borrarCamposFechaCitas,false);
+document.getElementById("btnBorrarCitas").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarCitas").addEventListener("click",cancelar,false);
 document.getElementById("formularioAsignarIncidencia").addEventListener("click",mostrarFormularioIncidencia,false);
 document.getElementById("btnAceptarAsignarAdmin").addEventListener("click",asignarAdmin,false);
-document.getElementById("btnBorrarAsignarAdmin").addEventListener("click",borrarCamposAsignarAdmin,false);
+document.getElementById("btnBorrarAsignarAdmin").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarAsignarAdmin").addEventListener("click",cancelar,false);
 document.getElementById("formularioClienteMod").addEventListener("click",mostrarFormularioModificarCliente,false);
 document.getElementById("formularioCitaMod").addEventListener("click",mostrarFormularioModificarCita,false);
 document.getElementById("formularioMaterialMod").addEventListener("click",mostrarFormularioModificarMaterial,false);
 document.getElementById("btnAceptarModificarCliente").addEventListener("click",mostrarFormularioModificarDatosCliente,false);
-document.getElementById("btnBorrarModificarCliente").addEventListener("click",borrarCamposModificarCliente,false);
+document.getElementById("btnBorrarModificarCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarCliente").addEventListener("click",cancelar,false);
-document.getElementById("btnAceptarModificarCita").addEventListener("click",mostrarFormularioModificarCita,false);
-document.getElementById("btnBorrarModificarCita").addEventListener("click",borrarCamposModificarCita,false);
+document.getElementById("btnAceptarModificarCita").addEventListener("click",mostrarFormularioModificarDatosCita,false);
+document.getElementById("btnBorrarModificarCita").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarCita").addEventListener("click",cancelar,false);
-document.getElementById("btnAceptarModificarMaterial").addEventListener("click",mostrarFormularioModificarMaterial,false);
-document.getElementById("btnBorrarModificarMaterial").addEventListener("click",borrarCamposModificarMaterial,false);
+document.getElementById("btnAceptarModificarMaterial").addEventListener("click",mostrarFormularioModificarDatosMaterial,false);
+document.getElementById("btnBorrarModificarMaterial").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarMaterial").addEventListener("click",cancelar,false);
 document.getElementById("formularioMaterialBor").addEventListener("click",mostrarFormularioBorrarMaterial,false);
 document.getElementById("formularioClienteBor").addEventListener("click",mostrarFormularioBorrarCliente,false);
@@ -83,21 +83,37 @@ document.getElementById("formularioAdministrativoBor").addEventListener("click",
 document.getElementById("btnAceptarModificarDatosCliente").addEventListener("click",modificarCliente,false);
 document.getElementById("btnBorrarModificarDatosCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarDatosCliente").addEventListener("click",cancelar,false);
-/*document.getElementById("btnAceptarModificarDatosCita").addEventListener("click",modificarCita,false);
+document.getElementById("btnAceptarModificarDatosCita").addEventListener("click",modificarCita,false);
 document.getElementById("btnBorrarModificarDatosCita").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarDatosCita").addEventListener("click",cancelar,false);
-document.getElementById("btnAceptarModificaDatosrMaterial").addEventListener("click",moodificarMaterial,false);
+document.getElementById("btnAceptarModificarDatosMaterial").addEventListener("click",modificarMaterial,false);
 document.getElementById("btnBorrarModificarDatosMaterial").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarModificarDatosMaterial").addEventListener("click",cancelar,false);
-*/
 document.getElementById("btnAceptarBorrarCliente").addEventListener("click",borrarCliente,false);
 document.getElementById("btnBorrarBorrarCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarBorrarCliente").addEventListener("click",cancelar,false);
-
+document.getElementById("btnAceptarBorrarOperario").addEventListener("click",borrarOperario,false);
+document.getElementById("btnBorrarBorrarOperario").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarBorrarOperario").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarBorrarAdmin").addEventListener("click",borrarAdministrativo,false);
+document.getElementById("btnBorrarBorrarAdmin").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarBorrarAdmin").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarBorrarCita").addEventListener("click",borrarCita,false);
+document.getElementById("btnBorrarBorrarCita").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarBorrarCita").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarBorrarMaterial").addEventListener("click",borrarMaterial,false);
+document.getElementById("btnBorrarBorrarMaterial").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarBorrarMaterial").addEventListener("click",cancelar,false);
 document.getElementById("formularioCitasCliente").addEventListener("click",mostrarFormularioCitasCliente,false);
 document.getElementById("btnAceptarCitasCliente").addEventListener("click",listadoCitasCliente,false);
 document.getElementById("btnBorrarCitasCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarCitasCliente").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarInc").addEventListener("click",asignarIncidencia,false);
+document.getElementById("btnBorrarInc").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarInc").addEventListener("click",cancelar,false);
+
+
+
 
 function altaCliente(){
 	validarCliente();
@@ -201,6 +217,23 @@ function asignarAdmin(){
 	alert(mensaje);
 }
 
+function asignarIncidencia(){
+	validarAsignarIncidencia();
+	var mensaje="";
+	var sCita = document.getElementById("txtCitaInc").value.trim();
+	var sDescripcion = document.getElementById("txtDescInc").value.trim();
+
+	var oCita = oBrico.buscarCita(sCita);
+		if (oCita == null)
+		mensaje+="La cita no existe ";
+	else{
+		var incidencia = new Incidencia (oCita.incidencias.length+1,oCita.ID,sDescripcion);
+		oCita.incidencias.push(incidencia);
+		alert("Incidencia incluida en la cita");
+		cancelar();
+	}
+}
+
 function altaOperario(){
 	validarOperario();
 	var iNumOperario = oBrico.operarios.length;
@@ -254,17 +287,98 @@ function modificarCliente(){
 	cancelar();
 }
 
+function modificarCita(){
+	validarModificarCita();
+	var id = document.getElementById("txtNumModificarDatosCita").value.trim();
+	var oCitaAnt = oBrico.buscarCita(id);
+	var incidencias = oCitaAnt.incidencias;
+	var operarios = oCitaAnt.operarios;
+	var admin = oCitaAnt.administrativo;
+	oBrico.citas = oBrico.citas.filter(n=>(n.ID!=id));	
+	oCita = new Cita(txtNumModificarDatosCita.value.trim(),new Date((new Date(txtFechaModificarDatosCita.value.trim())).getTime()- 24*60*60*1000),txtClienteModificarDatosCita.value.trim(),txtDescripcionModificarDatosCita.value.trim())
+	oCita.incidencias = incidencias;
+	oCita.operarios = operarios;
+	oCita.administrativo = admin;
+	oBrico.citas.push(oCita);
+	alert("Datos de la cita modificados satisfactoriamente");
+	cancelar();
+}
+
+function modificarMaterial(){
+	validarModificarMaterial();
+	oBrico.materiales = oBrico.materiales.filter(n=>(n.ID!=txtCodModificarDatosMaterial.value));	
+	oMaterial = new Material(txtCodModificarDatosMaterial.value.trim(),txtNombreModificarDatosMaterial.value.trim(),txtPrecioModificarDatosMaterial.value.trim(),txtDescripcionModificarDatosMaterial.value.trim())
+	oBrico.materiales.push(oMaterial);
+	alert("Datos del material modificados satisfactoriamente");
+	cancelar();
+}
+
 
 function borrarCliente(){
 	validarBorrarCliente();
-	if (oBrico.buscar(txtBorrarCliente.value,oBrico.clientes)!=null){
-	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=txtBorrarCliente.value));	
+	sNIF = document.getElementById("txtBorrarCliente").value;
+	if (oBrico.buscar(sNIF,oBrico.clientes)!=null){
+	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=sNIF));	
 	alert("Cliente borrado de la base de datos");
 	cancelar();
 	}
 	else
 		alert("No existe un cliente con ese NIF");
 }
+
+
+function borrarOperario(){
+	validarBorrarOperario();
+	sNIF = document.getElementById("txtBorrarOperario").value;
+
+	if (oBrico.buscar(sNIF,oBrico.operarios)!=null){
+	oBrico.operarios = oBrico.operarios.filter(n=>(n.NIF!=sNIF));	
+	alert("Operario borrado de la base de datos");
+	cancelar();
+	}
+	else
+		alert("No existe un operario con ese NIF");
+}
+
+function borrarAdministrativo(){
+	validarBorrarAdministrativo();
+	sNIF = document.getElementById("txtBorrarAdmin").value;
+
+	if (oBrico.buscar(sNIF,oBrico.administrativos)!=null){
+	oBrico.administrativos = oBrico.administrativos.filter(n=>(n.NIF!=sNIF));	
+	alert("Administrativo borrado de la base de datos");
+	cancelar();
+	}
+	else
+		alert("No existe un administrativo con ese NIF");
+}
+
+function borrarMaterial(){
+	validarBorrarMaterial();
+	sCodigo = document.getElementById("txtBorrarMaterial").value;
+
+	if (oBrico.buscarMaterial(sCodigo)!=null){
+	oBrico.materiales = oBrico.administrativos.filter(n=>(n.ID!=sCodigo));	
+	alert("Material borrado de la base de datos");
+	cancelar();
+	}
+	else
+		alert("No existe un material con ese código");
+}
+
+function borrarCita(){
+	validarBorrarCita();
+	sID = document.getElementById("txtBorrarCita").value;
+
+	if (oBrico.buscarCita(sID)!=null){
+	oBrico.citas = oBrico.citas.filter(n=>(n.ID!=sID));	
+	alert("Cita borrada de la base de datos");
+	cancelar();
+	}
+	else
+		alert("No existe una cita con ese identificador");
+}
+
 
 
 //Listados
@@ -695,32 +809,44 @@ function mostrarFormularioModificarDatosCliente(){
 		alert ("El NIF introducido no corresponde a ningún cliente");
 }
 
+function mostrarFormularioModificarDatosCita(){
+	var id = document.getElementById("txtModificarCita").value;
+	var oCita = oBrico.buscarCita(id);
+	if (oCita != null){
+		ocultarCapas();
+		document.getElementById("txtNumModificarDatosCita").value = oCita.ID;
+		document.getElementById("txtFechaModificarDatosCita").value = new Date(oCita.fecha.getTime() + 24*60*60*1000).toISOString().substr(0,10);
+		document.getElementById("txtClienteModificarDatosCita").value = oCita.cliente;
+		document.getElementById("txtDescripcionModificarDatosCita").value = oCita.descripcion;	
+		document.getElementById("divFrmModificarDatosCita").style.display = "block";
+	}else
+		alert ("El Identificador introducido no corresponde a ninguna cita");
+}
+
+function mostrarFormularioModificarDatosMaterial(){
+	var id = document.getElementById("txtModificarMaterial").value;
+	var oMaterial = oBrico.buscarMaterial(id);
+	if (oMaterial != null){
+		ocultarCapas();
+		document.getElementById("txtCodModificarDatosMaterial").value = id;
+		document.getElementById("txtNombreModificarDatosMaterial").value = oMaterial.nombre;
+		document.getElementById("txtPrecioModificarDatosMaterial").value = oMaterial.precio;
+		document.getElementById("txtDescripcionModificarDatosMaterial").value = oMaterial.descripcion;	
+		document.getElementById("divFrmModificarDatosMaterial").style.display = "block";
+	}else
+		alert ("El código introducido no corresponde a ningún material");
+}
+
+
+
+
 function ocultarCapas(){
 	borrarCampos();
-	document.getElementById("divFrmCliente").style.display = "none";
-	document.getElementById("divFrmOperario").style.display = "none";
-	document.getElementById("divFrmAdministrativo").style.display = "none";
-	document.getElementById("divFrmMaterial").style.display = "none";
-	document.getElementById("divFrmCita").style.display = "none";
-	document.getElementById("divFrmAsignarMaterial").style.display = "none";
-	document.getElementById("divFrmAsignarOperario").style.display = "none";
-	document.getElementById("divFrmFechasCitas").style.display = "none";
-	document.getElementById("jumbo").style.display = "none";
-	document.getElementById("divFrmIncidencia").style.display = "none";
-	document.getElementById("divFrmAsignarAdmin").style.display = "none";
-	document.getElementById("divFrmModificarMaterial").style.display = "none";
-	document.getElementById("divFrmModificarCliente").style.display = "none";
-	document.getElementById("divFrmModificarCita").style.display = "none";
-	document.getElementById("divFrmBorrarCita").style.display = "none";
-	document.getElementById("divFrmBorrarCliente").style.display = "none";
-	document.getElementById("divFrmBorrarOperario").style.display = "none";
-	document.getElementById("divFrmBorrarAdmin").style.display = "none";
-	document.getElementById("divFrmBorrarMaterial").style.display = "none";
-	document.getElementById("divFrmModificarDatosCliente").style.display = "none";
-	document.getElementById("divFrmCitasCliente").style.display = "none";
-	//document.getElementById("divFrmModificarDatosCita").style.display = "block";
-	//document.getElementById("divFrmModificarDatosMaterial").style.display = "block";
+	var array = document.getElementsByClassName("divFrm");
+	for (var i=0;i<array.length;i++)
+		array[i].style.display = "none";
 
+	document.getElementById("jumbo").style.display = "none";
 }
 
 function cancelar(){
@@ -731,75 +857,19 @@ function cancelar(){
 function borrarCampos(){
 	limpiarErrores();
 	limpiarErrores();
+	var citaMod = document.getElementById("txtNumModificarDatosCita").value;
+	var clienteMod = document.getElementById("txtDniModificarDatosCliente").value;
+	var materialMod = document.getElementById("txtCodModificarDatosMaterial").value;
 	var array = document.getElementsByTagName("form");
 	for (var i=0;i<array.length;i++)
 		array[i].reset();
-}
 
-
-function borrarCamposCliente(){
-	frmAltaCliente.reset();
-}
-
-function borrarCamposOperario(){
-	frmAltaOperario.reset();
-}
-
-function borrarCamposAdministrativo(){
-	frmAltaAdministrativo.reset();
-}
-
-function borrarCamposMaterial(){
-	frmAltaMaterial.reset();
-}
-
-function borrarCamposModificarMaterial(){
-	frmModificarMaterial.reset();
-}
-
-function borrarCamposModificarCita(){
-	frmModificarCita.reset();
-}
-
-function borrarCamposModificarCliente(){
-	frmModificarCliente.reset();
-}
-
-function borrarCamposCita(){
-	frmCita.reset();
+	document.getElementById("txtNumModificarDatosCita").value = citaMod;
+	document.getElementById("txtDniModificarDatosCliente").value =clienteMod;
+	document.getElementById("txtCodModificarDatosMaterial").value = materialMod;
 	document.getElementById("txtNumCita").value = oBrico.iNumCita;
-}
 
-function borrarCamposAsignarMaterial(){
-	frmAsignarMaterial.reset();
 }
-function borrarCamposAsignarOperario(){
-	frmAsignarOperario.reset();
-}
-
-function borrarCamposAsignarAdmin(){
-	frmAsignarAdmin.reset();
-}
-
-function borrarCamposFechaCitas(){
-	frmFechasCitas.reset();
-}
-
-function borrarCamposCitasCliente(){
-	frmCitasCliente.reset();
-}
-/*
-function borrarCampos(){
-	borrarCamposCliente();
-	borrarCamposOperario();
-	borrarCamposAdministrativo();
-	borrarCamposMaterial();
-	borrarCamposCita();
-	borrarCamposAsignarMaterial();
-	borrarCamposAsignarOperario();
-	borrarCamposFechaCitas();
-}
-*/
 
 //validar Alta Operario
 function validarOperario(oEvento) {
@@ -884,6 +954,61 @@ function validarAdministrativo(oEvento) {
     }
 
 }
+//Validar Modificar cita
+function validarModificarCita(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	 //Validar DNI de cita
+    var sDNI = frmModificarDatosCita.txtClienteModificarDatosCita.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmModificarDatosCita.txtClienteCita.classList.add("error");
+        frmModificarDatosCita.txtClienteCita.focus();
+        sError += "\n El DNI debe contener 8 numeros y una letra final.";
+    }
+
+	//Validar fecha
+	var sFecha = frmModificarDatosCita.txtFechaModificarDatosCita.value.trim();
+   // var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
+
+    if (sFecha == "") {
+        bValido = false;
+
+        frmModificarDatosCita.txtFechaModificarDatosCita.classList.add("error");
+        frmModificarDatosCita.txtFechaModificarDatosCita.focus();
+        sError += "\n Debe elegir una fecha.";
+    }
+    //Validar Descripcion 
+	var sDes = frmModificarDatosCita.txtDescripcionModificarDatosCita.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
+
+    if (oExpReg.test(sDes) == false) {
+        bValido = false;
+
+        frmModificarDatosCita.txtDescripcionModificarDatosCita.classList.add("error");
+        frmModificarDatosCita.txtDescripcionModificarDatosCita.focus();
+        sError += "\n Añade una descripción.";
+    }
+
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+
+}
+
 //Validar Crear cita
 function validarCrearCita(oEvento) {
 
@@ -905,7 +1030,7 @@ function validarCrearCita(oEvento) {
         sError += "\n El DNI debe contener 8 numeros y una letra final.";
     }
 
-	/*//Validar fecha
+	//Validar fecha
 	var sFecha = frmCita.txtFechaCita.value.trim();
     var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
 
@@ -914,9 +1039,9 @@ function validarCrearCita(oEvento) {
 
         frmCita.txtFechaCita.classList.add("error");
         frmCita.txtFechaCita.focus();
-        sError += "\n Fecha incorrecta debe estar en el siguiente formato dd/mm/aaaa.";
+        sError += "\n Debe elegir una fecha.";
     }
-*/
+
     //Validar Descripcion l
 	var sDes = frmCita.txtDescripcionCita.value.trim();
     var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
@@ -939,6 +1064,7 @@ function validarCrearCita(oEvento) {
     }
 
 }
+
 
 //Validar Alta Cliente
 function validarCliente(oEvento) {
@@ -1107,6 +1233,119 @@ function validarBorrarCliente(oEvento){
     }
 }
 
+function validarBorrarOperario(oEvento){
+
+ var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del operario
+    var sDNI = frmBorrarOperario.txtBorrarOperario.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmBorrarOperario.txtBorrarOperario.classList.add("error");
+        frmBorrarOperario.txtBorrarOperario.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	 if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+}
+
+function validarBorrarAdministrativo(oEvento){
+
+ var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del admin
+    var sDNI = frmBorrarAdmin.txtBorrarAdmin.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmBorrarAdmin.txtBorrarAdmin.classList.add("error");
+        frmBorrarAdmin.txtBorrarAdmin.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	 if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+}
+
+function validarBorrarCita(oEvento){
+
+ var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del Ciente
+    var sID = frmBorrarCita.txtBorrarCita.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+
+    if (oExpReg.test(sID) == false) {
+        bValido = false;
+
+        frmBorrarCita.txtBorrarCita.classList.add("error");
+        frmBorrarCita.txtBorrarCita.focus();
+        sError += " El identificador de cita debe ser un numero entero.";
+    }
+	 if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+}
+
+function validarBorrarMaterial(oEvento){
+
+ var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar codigo material
+    var sCod = frmBorrarMaterial.txtBorrarMaterial.value.trim();
+     var oExpReg = /^[a-zA-Z]{3}\d{3}$/;
+
+
+    if (oExpReg.test(sCod) == false) {
+        bValido = false;
+
+        frmBorrarMaterial.txtBorrarMaterial.classList.add("error");
+        frmBorrarMaterial.txtBorrarMaterial.focus();
+        sError += " El codigo debe contener 3 letras y 3 numeros.";
+    }
+	 if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+}
 
 //Validar Asignar Material
 function validarAsignarMaterial(oEvento) {
@@ -1241,6 +1480,47 @@ function validarAsignarAdmin(oEvento) {
 
 }
 
+//validar asignar incidencia
+function validarAsignarIncidencia(oEvento){
+var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+limpiarErrores();
+
+//Validar Cita de Asignar incidencia
+	var sCita = frmAltaIncidencia.txtCitaInc.value.trim();
+    var oExpReg = /^[0-9\s]{1,9}$/;
+
+    if (oExpReg.test(sCita) == false) {
+        bValido = false;
+
+        frmAltaIncidencia.txtCitaInc.classList.add("error");
+        frmAltaIncidencia.txtCitaInc.focus();
+        sError += "\n La cita debe ser numérico entre 1 y 9 digitos.";
+    }
+
+        //Validar Descripcion 
+	var sDes = frmAltaIncidencia.txtDescInc.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
+
+    if (oExpReg.test(sDes) == false) {
+        bValido = false;
+
+        frmAltaIncidencia.txtDescInc.classList.add("error");
+        frmAltaIncidencia.txtDescInc.focus();
+        sError += "\n Añade una descripción.";
+    }
+
+if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+
+}
 //Validar Alta Material
 function validarAltaMaterial(oEvento) {
 
@@ -1292,6 +1572,59 @@ function validarAltaMaterial(oEvento) {
 
         frmAltaMaterial.txtDescripcionMat.classList.add("error");
         frmAltaMaterial.txtDescripcionMat.focus();
+        sError += "\n Añade una descripción.";
+    }
+	
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+
+}
+
+//Validar Modificar Material
+function validarModificarMaterial(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	//Validar nombre de Alta Material
+    var sNombre = frmModificarDatosMaterial.txtNombreModificarDatosMaterial.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmModificarDatosMaterial.txtNombreModificarDatosMaterial.classList.add("error");
+        frmModificarDatosMaterial.txtNombreModificarDatosMaterial.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
+    }
+	//Validar Precio de Alta Material
+	var sPrecio = frmModificarDatosMaterial.txtPrecioModificarDatosMaterial.value.trim();
+    var oExpReg = /^\d+(\.\d{1,2})?$/;
+
+    if (oExpReg.test(sPrecio) == false) {
+        bValido = false;
+
+        frmModificarDatosMaterial.txtPrecioModificarDatosMaterial.classList.add("error");
+        frmModificarDatosMaterial.txtPrecioModificarDatosMaterial.focus();
+        sError += "\n El Precio debe ser numérico y contener como maximo 2 decimales.";
+    }
+	//Validar Descripcion de Alta Material
+	var sDes = frmModificarDatosMaterial.txtDescripcionModificarDatosMaterial.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
+
+    if (oExpReg.test(sDes) == false) {
+        bValido = false;
+
+        frmModificarDatosMaterial.txtDescripcionModificarDatosMaterial.classList.add("error");
+        frmModificarDatosMaterial.txtDescripcionModificarDatosMaterial.focus();
         sError += "\n Añade una descripción.";
     }
 	

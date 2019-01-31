@@ -219,8 +219,9 @@ class Material{
 
 
 class Incidencia{
-	constructor(sID,sDescripcion){
+	constructor(sID,sCita,sDescripcion){
 		this.ID = sID;
+		this.cita = sCita;
 		this.descripcion = sDescripcion;
 	}
 }

@@ -82,7 +82,7 @@
         <h4> Elija una opción.</h4>
       </div>
 
-      <div class="row col-12" id="divFrmCliente">
+      <div class="row col-12 divFrm" id="divFrmCliente">
         <form class="col-12" method="post" id="frmAltaCliente">
           <h1>Alta de Cliente</h1>
           <div id="camposCliente">
@@ -121,7 +121,7 @@
         </form>
       </div>
 
-      <div class="row col-12" id="divFrmOperario">
+      <div class="row col-12 divFrm" id="divFrmOperario">
         <form class="col-12" method="post" id="frmAltaOperario">
           <h1>Alta de Operario</h1>
           <div id="camposOperario">
@@ -148,7 +148,7 @@
         </form>
       </div>
 
-      <div class="row col-12" id="divFrmAdministrativo">
+      <div class="row col-12 divFrm" id="divFrmAdministrativo">
         <form class="col-12" method="post" id="frmAltaAdministrativo">
           <h1>Alta de Administrativo</h1>
           <div id="camposAdministrativo">
@@ -175,7 +175,7 @@
         </form>
       </div>
 
-      <div class="row col-12" id="divFrmIncidencia">
+      <div class="row col-12 divFrm" id="divFrmIncidencia">
         <form class="col-12" method="post" id="frmAltaIncidencia">
           <h1>Asignar Incidencia</h1>
           <div id="camposIncidencias">
@@ -204,7 +204,7 @@
 
 
 
-      <div class="row col-12" id="divFrmMaterial">
+      <div class="row col-12 divFrm" id="divFrmMaterial">
         <form class="col-12" method="post" id="frmAltaMaterial">
           <h1>Alta de Material</h1>
           <div id="camposMaterial">
@@ -244,7 +244,7 @@
       </div>
 
 
-  <div class="row col-12" id="divFrmCita">
+  <div class="row col-12 divFrm" id="divFrmCita">
     <form class="col-12" method="post" id="frmCita">
       <h1>Creación de una Cita</h1>
       <div id="camposCita">
@@ -283,7 +283,7 @@
     </form>
   </div>
 
-  <div class="row col-12" id="divFrmAsignarMaterial">
+  <div class="row col-12 divFrm" id="divFrmAsignarMaterial">
     <form class="col-12" method="post" id="frmAsignarMaterial">
       <h1>Asignar Material</h1>
       <div id="camposAsignarMaterial">
@@ -310,7 +310,7 @@
     </form>
   </div>
 
-  <div class="row col-12" id="divFrmAsignarOperario">
+  <div class="row col-12 divFrm" id="divFrmAsignarOperario">
     <form class="col-12" method="post" id="frmAsignarOperario">
       <h1>Asignar Operario</h1>
       <div id="camposAsignarOperario">
@@ -338,7 +338,7 @@
     </form>
   </div>
 
-  <div class="row col-12" id="divFrmAsignarAdmin">
+  <div class="row col-12 divFrm" id="divFrmAsignarAdmin">
     <form class="col-12" method="post" id="frmAsignarAdmin">
       <h1>Asignar Administrativo</h1>
       <div id="camposAsignarAdmin">
@@ -366,7 +366,7 @@
     </form>
   </div>
 
-   <div class="row col-12" id="divFrmModificarCliente">
+   <div class="row col-12 divFrm" id="divFrmModificarCliente">
     <form class="col-12" method="post" id="frmModificarCliente">
       <h1>Modificar Datos Cliente</h1>
       <div id="camposModificarCliente">
@@ -388,7 +388,7 @@
     </form>
   </div>
 
- <div class="row col-12" id="divFrmModificarDatosCliente">
+ <div class="row col-12 divFrm" id="divFrmModificarDatosCliente">
         <form class="col-12" method="post" id="frmModificarDatosCliente">
           <h1>Modificar Datos Cliente</h1>
           <div id="camposModificarDatosCliente">
@@ -427,7 +427,7 @@
         </form>
       </div>
 
-   <div class="row col-12" id="divFrmModificarCita">
+   <div class="row col-12 divFrm" id="divFrmModificarCita">
     <form class="col-12" method="post" id="frmModificarCita">
       <h1>Modificar Datos Cita</h1>
       <div id="camposModificarCita">
@@ -449,7 +449,46 @@
     </form>
   </div>
 
-     <div class="row col-12" id="divFrmModificarMaterial">
+    <div class="row col-12 divFrm" id="divFrmModificarDatosCita">
+    <form class="col-12" method="post" id="frmModificarDatosCita">
+      <h1>Modificación de una Cita</h1>
+      <div id="camposModificarDatosCita">
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtNumModificarDatosCita">Nº CITA:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtNumModificarDatosCita" name="txtNumModificarDatosCita"  type="text" disabled>
+          </div>
+        </div>
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtFechaModificarDatosCita">FECHA:</label>
+          <div class="col-md-10">
+            <input type="date" class="form-control" id="txtFechaModificarDatosCita" name="txtFechaModificarDatosCita" >
+          </div>
+        </div>
+        <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtClienteModificarDatosCita">CLIENTE:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtClienteModificarDatosCita" name="txtClienteModificarDatosCita" placeholder="12345678X" type="text" maxlength="50">
+          </div>
+        </div>
+         <div class="form-group row align-items-center">
+          <label class="control-label col-md-2 " for="txtDescripcionModificarDatosCita">DESCRIPCION:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="txtDescripcionModificarDatosCita" name="txtDescripcionModificarDatosCita" type="text" maxlength="50">
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-end">
+        <div class="form-group mr-3">
+          <input type="button" id="btnAceptarModificarDatosCita" name="btnAceptarModificarDatosCita" class="btn btn-primary " value="Aceptar"/>
+          <input type="button" id="btnBorrarModificarDatosCita" name="btnBorrarModificarDatosCita" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+          <input type="button" id="btnCancelarModificarDatosCita" name="btnCancelarModificarDatosCita" class="btn btn-danger" value="Cancelar"/>
+        </div>
+      </div>
+    </form>
+  </div>
+
+     <div class="row col-12 divFrm" id="divFrmModificarMaterial">
     <form class="col-12" method="post" id="frmModificarMaterial">
       <h1>Modificar Datos Material</h1>
       <div id="camposModificarMaterial">
@@ -471,9 +510,46 @@
     </form>
   </div>
 
+<div class="row col-12 divFrm" id="divFrmModificarDatosMaterial">
+        <form class="col-12" method="post" id="frmModificarDatosMaterial">
+          <h1>Modificar Datos de Material</h1>
+          <div id="camposModificarDatosMaterial">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtCodModificarDatosMaterial">CODIGO:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtCodModificarDatosMaterial" name="txtCodModificarDatosMaterial" placeholder="XXX111" type="text" maxlength="6" disabled>
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtNombreModificarDatosMaterial">NOMBRE:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtNombreModificarDatosMaterial" name="txtNombreModificarDatosMaterial" placeholder="Nombre" type="text" maxlength="50">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtPrecioModificarDatosMaterial">PRECIO:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtPrecioModificarDatosMaterial" name="txtPrecioModificarDatosMaterial" placeholder="12" type="text" maxlength="10">
+              </div>
+            </div>
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDescripcionModificarDatosMaterial">DESCRIPCION:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDescripcionModificarDatosMaterial" name="txtDescripcionModificarDatosMaterial" placeholder="" type="text" maxlength="50">
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarModificarDatosMaterial" name="btnAceptarModificarDatosMaterial" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarModificarDatosMaterial" name="btnBorrarModificarDatosMaterial" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarModificarDatosMaterial" name="btnCancelarModificarDatosMaterial" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
 
-
-   <div class="row col-12" id="divFrmBorrarCliente">
+   <div class="row col-12 divFrm" id="divFrmBorrarCliente">
     <form class="col-12" method="post" id="frmBorrarCliente">
       <h1>Baja Cliente</h1>
       <div id="camposBorrarCliente">
@@ -497,7 +573,7 @@
 
 
 
-     <div class="row col-12" id="divFrmBorrarOperario">
+     <div class="row col-12 divFrm" id="divFrmBorrarOperario">
     <form class="col-12" method="post" id="frmBorrarOperario">
       <h1>Baja Operario</h1>
       <div id="camposBorrarOperario">
@@ -519,7 +595,7 @@
     </form>
   </div>
 
-     <div class="row col-12" id="divFrmBorrarAdmin">
+     <div class="row col-12 divFrm" id="divFrmBorrarAdmin">
     <form class="col-12" method="post" id="frmBorrarAdmin">
       <h1>Baja Administrativo</h1>
       <div id="camposBorrarAdmin">
@@ -541,7 +617,7 @@
     </form>
   </div>
 
-   <div class="row col-12" id="divFrmBorrarCita">
+   <div class="row col-12 divFrm" id="divFrmBorrarCita">
     <form class="col-12" method="post" id="frmBorrarCita">
       <h1>Baja Cita</h1>
       <div id="camposBorrarCita">
@@ -563,14 +639,14 @@
     </form>
   </div>
 
-     <div class="row col-12" id="divFrmBorrarMaterial">
+     <div class="row col-12 divFrm" id="divFrmBorrarMaterial">
     <form class="col-12" method="post" id="frmBorrarMaterial">
       <h1>Baja Material</h1>
       <div id="camposBorrarMaterial">
         <div class="form-group row align-items-center">
           <label class="control-label col-md-2 " for="txtBorrarMaterial">CÓDIGO:</label>
           <div class="col-md-10">
-            <input class="form-control" id="txtBorrarCita" name="txtBorrarCita" placeholder="ABC123" type="text">
+            <input class="form-control" id="txtBorrarMaterial" name="txtBorrarMaterial" placeholder="ABC123" type="text">
           </div>
         </div>
       </div>
@@ -585,7 +661,7 @@
     </form>
   </div>
 
-  <div class="row col-12" id="divFrmFechasCitas">
+  <div class="row col-12 divFrm" id="divFrmFechasCitas">
     <form class="col-12" method="post" id="frmFechasCitas">
       <div id="camposFechasCitas">
         <legend>Listado de Citas en un periodo</legend>
@@ -613,7 +689,7 @@
     </form>
   </div>
 
-  <div class="row col-12" id="divFrmCitasCliente">
+  <div class="row col-12 divFrm" id="divFrmCitasCliente">
         <form class="col-12" method="post" id="frmCitasCliente">
           <h1>Listado de citas de un cliente</h1>
           <div id="camposCitasCliente">
