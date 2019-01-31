@@ -62,23 +62,33 @@ Brico.prototype.altaMaterial = function(oMaterial){
 
 	var sRespuesta = "No se ha podido dar de alta el material";
 	if(this.buscarMaterial(oMaterial.ID)==null){
-		this.material.push(oMaterial);
+		this.materiales.push(oMaterial);
 		sRespuesta = "Material dado de alta satisfactoriamente"; 	
 	}
 	return sRespuesta;
 }
 
-Brico.prototype.buscarMaterial = function(sID,lista){
+Brico.prototype.buscarMaterial = function(sID){
 
 	var oMaterial = null;
-	var array = lista.filter(n => n.ID == sID);
+	var array = this.materiales.filter(n => n.ID == sID);
 
 	if (array.length > 0)
 		oMaterial = array[0];
 
 	return oMaterial;    
 }
+Brico.prototype.buscarCita = function(sID){
 
+	var oCita = null;
+	var array = this.citas.filter(n => n.ID == sID);
+	
+		
+	if (array.length > 0)
+		oCita = array[0];
+
+	return oCita;    
+}
 Brico.prototype.altaCita = function(oCita){
 
 	var sRespuesta = "No se ha podido crear la cita. El cliente no existe.";
@@ -89,7 +99,7 @@ Brico.prototype.altaCita = function(oCita){
 	}
 	return sRespuesta;
 }
-/*
+
 Brico.prototype.asignarMaterial = function(oAsignarMaterial){
 
 	var sRespuesta = "No se ha podido Asignar el material";
@@ -119,7 +129,7 @@ Brico.prototype.asignarAdmin = function(oAsginarAdmin){
 	}
 	return sRespuesta;
 }
-*/
+
 class Cliente{
 	constructor(sNIF,sNombre,sDireccion,iTelefono) {
 		this.NIF = sNIF;
@@ -168,7 +178,8 @@ class Cita{
 		this.descripcion = sDescripcion;
 		this.materiales = [];
 		this.incidencias = [];
-		this.operario = null;		
+		this.operarios = [];
+		this.administrativos = "";		
 	}
 
 	getID(){
@@ -194,29 +205,6 @@ class Material{
 	}
 }
 
-class AsMaterial{
-	constructor(sCita,iCod){
-		this.cita = sCita;
-		this.cod = iCod;
-		
-	}
-}
-
-class AsOperario{
-	constructor(sCita,iCod){
-		this.cita = sCita;
-		this.dni = sDni;
-		
-	}
-}
-
-class AsAdmin{
-	constructor(sCita,iCod){
-		this.cita = sCita;
-		this.dni = sDni;
-		
-	}
-}
 
 class Incidencia{
 	constructor(sID,sDescripcion){
