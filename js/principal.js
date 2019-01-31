@@ -365,13 +365,36 @@ function borrarCita(){
 function listadoClientes(){
 	var oVentana = open("","_blank");
 	oVentana.document.title = "Listado Clientes";
+
+/* Para usar el datatable 
+
+	oCSS = oVentana.document.createElement("link");
+	oCSS.rel = "stylesheet";
+	oCSS.href = "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css";
+	oJS = oVentana.document.createElement("script");
+	oJS.src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js";
+	oJS.type= "text/javascript";
+	oJS.charset = "utf8";
+	oJQ = oVentana.document.createElement("script");
+	oJQ.src = "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";
+	oJQ.type = "text/javascript"
+	oScript = oVentana.document.createElement("script");
+	oScript.textContent = "$(document).ready( function () {$('#tabla').DataTable();} );";
+	oVentana.document.head.appendChild(oCSS);
+	oVentana.document.head.appendChild(oJQ);
+	oVentana.document.head.appendChild(oJS);
+	oVentana.document.head.appendChild(oScript);
+	
+	*/
 	
 	var oTitulo =document.createElement("h1");
 	oTitulo.textContent = "Listado de clientes";
 	oVentana.document.body.appendChild(oTitulo);
 
+
 	var oTabla = document.createElement("table");
         oTabla.border = "1";
+        oTabla.id = "tabla";
 
         // THEAD
         var oTHead = oTabla.createTHead();
@@ -406,6 +429,8 @@ function listadoClientes(){
     }    
 	
 	oVentana.document.body.appendChild(oTabla);
+	
+	
 	ocultarCapas();
 	mostrarJumbotron();
 }
