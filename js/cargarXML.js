@@ -117,7 +117,7 @@ function cargarCitas(){
 
 		
 		
-		cita =new Cita(oID,oFecha,oCliente,oDescripcion);
+		cita =new Cita(oID,new Date(oFecha),oCliente,oDescripcion);
 		cita.materiales = materiales;
 		cita.operarios = operarios;
 		cita.incidencias = incidencias;

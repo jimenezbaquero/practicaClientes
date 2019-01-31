@@ -510,7 +510,7 @@ function listadoTodasCitas(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].fecha;
+        oCelda.textContent = oBrico.citas[i].fecha.toLocaleDateString();
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getCliente();
 		oCelda = oFila.insertCell(-1);
@@ -674,7 +674,7 @@ function listadoCitasCliente(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasClientePeriodo[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = citasClientePeriodo[i].getFecha();
+        oCelda.textContent = citasClientePeriodo[i].getFecha().toLocaleDateString();
 		oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasClientePeriodo[i].getDescripcion();
 	}
@@ -694,7 +694,7 @@ function obtenerCitasCliente(sCliente){
 }
 
 function obtenerCitas(fechaI, fechaF){
-	var array = oBrico.citas.filter(n=>(n.fecha>=fechaI.toLocaleDateString() && n.fecha <=fechaF.toLocaleDateString()));
+	var array = oBrico.citas.filter(n=>(n.fecha>=fechaI && n.fecha <=fechaF));
 	return array;
 }
 
@@ -1037,9 +1037,9 @@ function validarCrearCita(oEvento) {
 
 	//Validar fecha
 	var sFecha = frmCita.txtFechaCita.value.trim();
-    var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
+    //var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
 
-    if (oExpReg.test(sFecha) == false) {
+    if (sFecha == "") {
         bValido = false;
 
         frmCita.txtFechaCita.classList.add("error");
