@@ -75,17 +75,19 @@ document.getElementById("formularioClienteBor").addEventListener("click",mostrar
 document.getElementById("formularioCitaBor").addEventListener("click",mostrarFormularioBorrarCita,false);
 document.getElementById("formularioOperarioBor").addEventListener("click",mostrarFormularioBorrarOperario,false);
 document.getElementById("formularioAdministrativoBor").addEventListener("click",mostrarFormularioBorrarAdministrativo,false);
-
-//Validacion de formularios
-function hayCamposVacios(divCampo){
-	var array = divCampo.getElementsByTagName("input");
-	var bVacio = false;
-	for(let i = 0; i<array.length;i++){
-		if (array[i].value == "")
-			bVacio = true;
-	}
-	return bVacio;	
-}
+document.getElementById("btnAceptarModificarDatosCliente").addEventListener("click",modificarCliente,false);
+document.getElementById("btnBorrarModificarDatosCliente").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarModificarDatosCliente").addEventListener("click",cancelar,false);
+/*document.getElementById("btnAceptarModificarDatosCita").addEventListener("click",modificarCita,false);
+document.getElementById("btnBorrarModificarDatosCita").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarModificarDatosCita").addEventListener("click",cancelar,false);
+document.getElementById("btnAceptarModificaDatosrMaterial").addEventListener("click",moodificarMaterial,false);
+document.getElementById("btnBorrarModificarDatosMaterial").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarModificarDatosMaterial").addEventListener("click",cancelar,false);
+*/
+document.getElementById("btnAceptarBorrarCliente").addEventListener("click",borrarCliente,false);
+document.getElementById("btnBorrarBorrarCliente").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarBorrarCliente").addEventListener("click",cancelar,false);
 
 function altaCliente(){
 	validarCliente();
@@ -164,16 +166,38 @@ function altaCita(){
 	var iNumCitas = oBrico.citas.length;
 	var mensaje = "";
 	var iID = document.getElementById("txtNumCita").value.trim();
-	var dFecha = document.getElementById("txtFechaCita").value.trim();
+	var dFecha = document.getElementById("txtFechaCita").value;
 	var sCliente = document.getElementById("txtClienteCita").value.trim();
 	var sDescripcion = document.getElementById("txtDescripcionCita").value.trim();
-	var oCita = new Cita(iID,dFecha,sCliente,sDescripcion);
+	var oCita = new Cita(iID,new Date(dFecha),sCliente,sDescripcion);
 
 	mensaje = oBrico.altaCita(oCita);
 	alert(mensaje);
 	if (oBrico.citas.length>iNumCitas)
 		cancelar();
 }
+
+function modificarCliente(){
+	validarModificarCliente();
+	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=txtDniModificarDatosCliente.value));	
+	oCliente = new Cliente(txtDniModificarDatosCliente.value.trim(),txtNombreModificarDatosCliente.value.trim(),txtDireccionModificarDatosCliente.value.trim(),txtTfnoModificarDatosCliente.value.trim())
+	oBrico.clientes.push(oCliente);
+	alert("Datos del cliente modificados satisfactoriamente");
+	cancelar();
+}
+
+
+function borrarCliente(){
+	validarBorrarCliente();
+	if (oBrico.buscar(txtBorrarCliente.value,oBrico.clientes)!=null){
+	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=txtBorrarCliente.value));	
+	alert("Cliente borrado de la base de datos");
+	cancelar();
+	}
+	else
+		alert("No existe un cliente con ese NIF");
+}
+
 
 //Listados
 function listadoClientes(){
@@ -353,16 +377,22 @@ function listadoCitas(){
 
 	for (let i=0;i<citasPeriodo.length;i++)
 	{
+
 		oFila = oTBody.insertRow(-1);
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getID();
+        oCelda.textContent = citasPeriodo[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getFecha().toLocaleDateString();
+        oCelda.textContent = citasPeriodo[i].getFecha().toLocaleDateString();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getCliente();
+        oCelda.textContent = citasPeriodo[i].getCliente();
 		oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getDescripcion();
-    }    
+        oCelda.textContent = citasPeriodo[i].getDescripcion();
+	}
+    oVentana.document.body.appendChild(oTabla);
+	ocultarCapas();
+	mostrarJumbotron();
+    
+
 }
 
 function obtenerCitas(fechaI, fechaF){
@@ -513,6 +543,15 @@ function cancelar(){
 	mostrarJumbotron();
 }
 
+function borrarCampos(){
+	limpiarErrores();
+	limpiarErrores();
+	var array = document.getElementsByTagName("form");
+	for (var i=0;i<array.length;i++)
+		array[i].reset();
+}
+
+
 function borrarCamposCliente(){
 	frmAltaCliente.reset();
 }
@@ -560,7 +599,7 @@ function borrarCamposAsignarAdmin(){
 function borrarCamposFechaCitas(){
 	frmFechasCitas.reset();
 }
-
+/*
 function borrarCampos(){
 	borrarCamposCliente();
 	borrarCamposOperario();
@@ -571,6 +610,7 @@ function borrarCampos(){
 	borrarCamposAsignarOperario();
 	borrarCamposFechaCitas();
 }
+*/
 
 //validar Alta Operario
 function validarOperario(oEvento) {
@@ -676,7 +716,7 @@ function validarCrearCita(oEvento) {
         sError += "\n El DNI debe contener 8 numeros y una letra final.";
     }
 
-	//Validar fecha
+	/*//Validar fecha
 	var sFecha = frmCita.txtFechaCita.value.trim();
     var oExpReg = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/
 
@@ -687,7 +727,7 @@ function validarCrearCita(oEvento) {
         frmCita.txtFechaCita.focus();
         sError += "\n Fecha incorrecta debe estar en el siguiente formato dd/mm/aaaa.";
     }
-
+*/
     //Validar Descripcion l
 	var sDes = frmCita.txtDescripcionCita.value.trim();
     var oExpReg = /^[a-zA-Z0-9\s]{1,50}$/;
@@ -785,6 +825,99 @@ function validarCliente(oEvento) {
     }
 
 }
+
+function validarModificarCliente(oEvento) {
+
+    var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+	//Validar nombre del cliente
+    var sNombre = frmModificarDatosCliente.txtNombreModificarDatosCliente.value.trim();
+    var oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
+
+    if (oExpReg.test(sNombre) == false) {
+        bValido = false;
+
+        frmModificarDatosCliente.txtNombreModificarDatosCliente.classList.add("error");
+        frmModificarDatosCliente.txtNombreModificarDatosCliente.focus();
+        sError += "\n El nombre debe ser alfanumérico entre 2 y 50 caracteres.";
+    }
+
+    //Validar Direccion del cliente
+    var sDireccion = frmModificarDatosCliente.txtDireccionModificarDatosCliente.value.trim();
+    oExpReg = /^[a-zA-Z0-9\s]{2,50}$/;
+
+    if (oExpReg.test(sDireccion) == false) {
+
+        if (bValido == true) { // ==> Primer error detectado en este campo
+            frmModificarDatosCliente.txtDireccionModificarDatosCliente.focus();
+            bValido = false;
+        }
+
+        frmModificarDatosCliente.txtDireccionModificarDatosCliente.classList.add("error");
+
+        sError += "\n La direccion es incorrecta.";
+    }
+
+    //Validar telefono del cliente 
+    var sTelefono = frmModificarDatosCliente.txtTfnoModificarDatosCliente.value.trim();
+    oExpReg = /^[679]\d{8}$/;
+
+    if (oExpReg.test(sTelefono) == false) {
+
+        if (bValido == true) { // ==> Primer error detectado en este campo
+            frmModificarDatosCliente.txtTfnoModificarDatosCliente.focus();
+            bValido = false;
+        }
+
+        frmModificarDatosCliente.txtTfnoModificarDatosCliente.classList.add("error");
+
+        sError += "\n El teléfono es incorrecto.";
+    }
+
+
+    
+    if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+
+}
+
+function validarBorrarCliente(oEvento){
+
+ var oE = oEvento || window.event;
+    var bValido = true;
+    var sError = "";
+
+    limpiarErrores();
+
+    //Validar DNI del Ciente
+    var sDNI = frmBorrarCliente.txtBorrarCliente.value.trim();
+    var oExpReg = /^\d{8}[a-zA-Z]$/;
+
+    if (oExpReg.test(sDNI) == false) {
+        bValido = false;
+
+        frmBorrarCliente.txtBorrarCliente.classList.add("error");
+        frmBorrarCliente.txtBorrarCliente.focus();
+        sError += " El DNI debe contener 8 numeros y una letra final.";
+    }
+	 if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+
+        //Cancelar submit
+        oE.preventDefault();
+    }
+}
+
 
 //Validar Asignar Material
 function validarAsignarMaterial(oEvento) {
@@ -997,6 +1130,16 @@ function validarListadoFechas(){
 }
 
 function limpiarErrores() {
+
+	var array = document.getElementsByClassName("error");
+	for (var i=0;i<array.length;i++)
+		array[i].classList.remove("error");
+
+	array = document.getElementsByClassName("error");
+	for (var i=0;i<array.length;i++)
+		array[i].classList.remove("error");
+
+	/*
 	frmAltaCliente.txtDniCli.classList.remove("error");
     frmAltaCliente.txtNombreCli.classList.remove("error");
     frmAltaCliente.txtDireccionCli.classList.remove("error");
@@ -1009,6 +1152,7 @@ function limpiarErrores() {
 	frmAltaMaterial.txtNombreMat.classList.remove("error");
 	frmAltaMaterial.txtPrecioMat.classList.remove("error");
 	frmAltaMaterial.txtDescripcionMat.classList.remove("error");
+	*/
 }
 
 //Funcion para salir de la aplicacion

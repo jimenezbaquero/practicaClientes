@@ -143,7 +143,7 @@ class Operario{
 class Cita{
 	constructor(iID,dFecha,sCliente,sDescripcion) {
 		this.ID = iID;
-		this.fecha = dFecha ;
+		this.fecha = dFecha;
 		this.cliente = sCliente;
 		this.descripcion = sDescripcion;
 		this.materiales = [];
