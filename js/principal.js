@@ -1,6 +1,6 @@
 // variable global
 var oBrico = new Brico();
-
+/*
 //datos
 oBrico.altaCliente(new Cliente ("12345678X","Manuel","Cuenca 24","666666666"));
 oBrico.altaCliente(new Cliente ("11111111X","Ale","Sevilla 24","655555555"));
@@ -18,6 +18,7 @@ oBrico.altaMaterial(new Material("ALB001","Ladrillo","15.5","Grandes"));
 
 oBrico.altaAdministrativo(new Administrativo("77777777A","Carlos"));
 
+*/
 // programa principal
 ocultarCapas();
 mostrarJumbotron();

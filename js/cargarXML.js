@@ -1,4 +1,4 @@
-var oXML = loadXMLDoc("UPOBRICO.xml");
+var oXML = loadXMLDoc("./XML/UPOBRICO.xml");
 cargarClientes();
 cargarOperarios();
 cargarMateriales();
@@ -24,85 +24,106 @@ function loadXMLDoc(filename)
     }
 	
 function cargarClientes(){
-	var oCliente = oXML.querySelectorAll("cliente");
+	var oClientes = oXML.querySelector("CLIENTES");
+	var arrayClientes = oClientes.querySelectorAll("CLIENTE");
 	
-	for(var i=0; i<oCliente.length; i++)
+	for(var i=0; i<arrayClientes.length; i++)
 	{
-		var oNIF = oCliente[i].querySelector("NIF").textContent;
-		var oNombre = oCliente[i].querySelector("NOMBRE").textContent;
-		var oDireccion = oCliente[i].querySelector("Direccion").textContent;
-		var oTelefono = oCliente[i].querySelector("Telefono").textContent;
+		var oNIF = arrayClientes[i].querySelector("NIF").textContent;
+		var oNombre = arrayClientes[i].querySelector("NOMBRE").textContent;
+		var oDireccion = arrayClientes[i].querySelector("DIRECCION").textContent;
+		var oTelefono = arrayClientes[i].querySelector("TELEFONO").textContent;
 		
 		oBrico.altaCliente(new Cliente(oNIF, oNombre, oDireccion, oTelefono));
 	}
 }
 
 function cargarOperarios(){
-	var oOperario = oXML.querySelectorAll("operario");
+	var oOperarios = oXML.querySelector("OPERARIOS");
+	var arrayOperarios = oOperarios.querySelectorAll("OPERARIO"); 
 	
-	for(var i=0; i<oOperario.length; i++)
+	for(var j=0; j<arrayOperarios.length; j++)
 	{
-		var oNIF = oOperario[i].querySelector("NIF").textContent;
-		var oNombre = oOperario[i].querySelector("NOMBRE").textContent;
+		var oNIF = arrayOperarios[j].querySelector("NIF").textContent;
+		var oNombre = arrayOperarios[j].querySelector("NOMBRE").textContent;
 		
 		oBrico.altaOperario(new Operario(oNIF, oNombre));
 	}
 }
 
 function cargarMateriales(){
-	var oMaterial = oXML.querySelectorAll("material");
-	
-	for(var i=0; i<oMaterial.length; i++)
+	var oMaterial = oXML.querySelector("MATERIALES");
+	var arrayMateriales = oMaterial.querySelectorAll("MATERIAL");
+
+	for(var i=0; i<arrayMateriales.length; i++)
 	{
-		var oID = oMaterial[i].querySelector("ID").textContent;
-		var oNombre = oMaterial[i].querySelector("NOMBRE").textContent;
-		var oPrecio = oMaterial[i].querySelector("PRECIO").textContent;
-		var oDescripcion = oMaterial[i].querySelector("DESCRIPCION").textContent;
+		var oID = arrayMateriales[i].querySelector("CODIGO").textContent;
+		var oNombre = arrayMateriales[i].querySelector("NOMBRE").textContent;
+		var oPrecio = arrayMateriales[i].querySelector("PRECIO").textContent;
+		var oDescripcion = arrayMateriales[i].querySelector("DESCRIPCION").textContent;
 		
 		oBrico.altaMaterial(new Material(oID,oNombre,oPrecio,oDescripcion));
 	}
 }
 
 function cargarAdministrativos(){
-	var oAdministrativo = oXML.querySelectorAll("administrativo");
+	var oAdministrativo = oXML.querySelector("ADMINISTRATIVOS");
+	var arrayAdmin = oAdministrativo.querySelectorAll("ADMINISTRATIVO");
+
 	
-	for(var i=0; i<oAdministrativo.length; i++)
+	for(var i=0; i<arrayAdmin.length; i++)
 	{
-		var oNIF = oAdministrativo[i].querySelector("NIF").textContent;
-		var oNombre = oAdministrativo[i].querySelector("NOMBRE").textContent;
+		var oNIF = arrayAdmin[i].querySelector("NIF").textContent;
+		var oNombre = arrayAdmin[i].querySelector("NOMBRE").textContent;
 		
 		oBrico.altaAdministrativo(new Administrativo(oNIF, oNombre));
 	}
 }
 
 function cargarCitas(){
-	var oCita = oXML.querySelectorAll("cita");
-	
-	for(var i=0; i<oCita.length; i++)
+	var oCita = oXML.querySelector("CITAS");
+	var arrayCitas = oCita.querySelectorAll("CITA");
+	var cita = null;
+
+	for(var i=0; i<arrayCitas.length; i++)
 	{
-		var oID = oCita[i].querySelector("ID").textContent;
-		var oFecha = oCita[i].querySelector("FECHA").textContent;
-		var oCliente = oCita[i].querySelector("CLIENTE").textContent;
-		var oDescripcion = oCita[i].querySelector("DESCRIPCION").textContent;
-		var oMateriales = oCita[i].querySelectorAll("MATERIAL");
-		var aMateriales = new Array();
+		var oID = arrayCitas[i].querySelector("ID").textContent;
+		var oFecha = arrayCitas[i].querySelector("FECHA").textContent;
+		var oCliente = arrayCitas[i].querySelector("CLIENTE").textContent;
+		var oDescripcion = arrayCitas[i].querySelector("DESCRIPCION").textContent;
+		var oAdministrativo = arrayCitas[i].querySelector("ADMINISTRATIVO").textContent;
+		var oMateriales = arrayCitas[i].querySelector("MATERIALES");
+		var arrayMateriales = oMateriales.querySelectorAll("MATERIAL");
+		var materiales = [];
+		for (var t=0;t<arrayMateriales.length;t++){
+			materiales.push(arrayMateriales[t].textContent);
+		}
 		//Recorremos todos los materiales de cada cita
-		for(var a=0; a<oMateriales.length; a++){
-			aMateriales.push(oMateriales[a].textContent);
-		}
-		var oIncidencias = oCita[i].querySelectorAll("INCIDENCIA");
-		var aIncidencias = new Array();
-		//Recorremos todos las incidencias de cada cita
-		for(var a=0; a<oIncidencias.length; a++){
-			aIncidencias.push(oIncidencias[a].textContent);
-		}
-		var oOperarios = oCita[i].querySelectorAll("OPERARIO");
-		var aOperarios = new Array();
-		//Recorremos todos los operarios de cada cita
-		for(var a=0; a<oOperarios.length; a++){
-			aOperarios.push(oOperarios[a].textContent);
-		}
 		
-		oBrico.altaCita(new Cita(oID,oNombre,oPrecio,oDescripcion,aMateriales,aIncidencias,aOperarios));
+		var oIncidencias = arrayCitas[i].querySelector("INCIDENCIAS");
+		var arrayIncidencias = oIncidencias.querySelectorAll("INCIDENCIA")
+		var incidencias = [];
+		for(var a=0; a<arrayIncidencias.length; a++){
+			incidencias.push(new Incidencia(arrayIncidencias[a].querySelector("NUMERO").textContent,oID,arrayIncidencias[a].querySelector("DESCRIPCION").textContent))	
+		}
+		var oOperarios = arrayCitas[i].querySelector("OPERARIOS");
+		var arrayOperarios = oOperarios.querySelectorAll("OPERARIO");
+		var operarios = [];
+		for (var t=0;t<arrayOperarios.length;t++){
+			operarios.push(arrayOperarios[t].textContent);
+		}
+
+		
+
+		
+		
+		cita =new Cita(oID,oFecha,oCliente,oDescripcion);
+		cita.materiales = materiales;
+		cita.operarios = operarios;
+		cita.incidencias = incidencias;
+		cita.administrativos = oAdministrativo;
+
+		oBrico.altaCita(cita);
+
 	}
 }
