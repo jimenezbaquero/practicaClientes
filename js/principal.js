@@ -135,6 +135,7 @@ function asignarMaterial(){
 			else{
 				oCita.materiales.push(iCod);
 				mensaje = "Material asignado Correctamente";
+				cancelar();
 			}
 	alert(mensaje);
 }
@@ -158,6 +159,7 @@ function asignarOperario(){
 			else{
 				oCita.operarios.push(sDni);
 				mensaje = "Operario asignado Correctamente";
+				cancelar();
 			}
 	alert(mensaje);
 }
@@ -175,13 +177,11 @@ function asignarAdmin(){
 	else
 		if (oAdministrativo==null)
 			mensaje += "El Administrativo no existe";
-		else
-			if(oCita.administrativos.includes(oAdministrativo))
-				mensaje += "El Administrativo ya ha sido asignado";
-			else{
-				oCita.administrativos.push(oAdministrativo);
-				mensaje = "Administrativo asignado Correctamente";
-			}
+		else{
+			oCita.administrativos = oAdministrativo;
+			mensaje = "Administrativo asignado Correctamente";
+			cancelar();
+		}
 	alert(mensaje);
 }
 

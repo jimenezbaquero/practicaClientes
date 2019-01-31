@@ -179,7 +179,7 @@ class Cita{
 		this.materiales = [];
 		this.incidencias = [];
 		this.operarios = [];
-		this.administrativos = "";		
+		this.administrativos = null;		
 	}
 
 	getID(){
