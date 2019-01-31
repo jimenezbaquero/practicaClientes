@@ -203,6 +203,18 @@ class Material{
 		this.precio = fPrecio;
 		this.descripcion = sDescripcion;
 	}
+	getID(){
+		return this.ID;
+	}
+	getNombre(){
+		return this.nombre;
+	}
+	getPrecio(){
+		return this.precio;
+	}
+	getDescripcion(){
+		return this.descripcion;
+	}
 }
 
 

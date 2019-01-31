@@ -65,6 +65,8 @@
                 <a class="dropdown-item dropdown-item-ligth" href="#" id="listaClientes" name="listaClientes">Clientes</a>
                 <a class="dropdown-item" href="#" id="listaOperario" name="listaOperario">Operarios</a>
                 <a class="dropdown-item" href="#" id="listaCitas" name="listaCitas">Citas</a>
+                <a class="dropdown-item" href="#" id="listaMateriales" name="listaMateriales">Materiales</a>
+                <a class="dropdown-item" href="#" id="formularioCitasCliente" name="formularioCitasCliente">Citas de un cliente</a>
                 <a class="dropdown-item" href="#" id="formularioListadoCitas" name="formularioListadoCitas">Citas en un periodo</a>
               </div>
             </li>
@@ -610,6 +612,28 @@
       </div>
     </form>
   </div>
+
+  <div class="row col-12" id="divFrmCitasCliente">
+        <form class="col-12" method="post" id="frmCitasCliente">
+          <h1>Listado ce citas de un cliente</h1>
+          <div id="camposCitasCliente">
+            <div class="form-group row align-items-center">
+              <label class="control-label col-md-2 " for="txtDniCitaCli">DNI:</label>
+              <div class="col-md-10">
+                <input class="form-control" id="txtDniCitaCli" name="txtDniCitaCli" placeholder="12345678X" type="text" maxlength="9">
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-end">
+            <div class="form-group mr-3">
+              <input type="button" id="btnAceptarCitasCliente" name="btnAceptarCitasCliente" class="btn btn-primary " value="Aceptar"/>
+              <input type="button" id="btnBorrarCitasCliente" name="btnBorrarCitasCliente" class="btn btn-secundary mr-2 ml-2" value="Borrar"/>
+              <input type="button" id="btnCancelarCitasCliente" name="btnCancelarCitasCliente" class="btn btn-danger" value="Cancelar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
 </div>  <!-- final del container de formularios -->
 </div>
 

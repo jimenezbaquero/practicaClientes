@@ -14,6 +14,8 @@ oBrico.altaCita(new Cita(1,new Date("2017/01/01"),"12345678X","tuberias"));
 oBrico.altaCita(new Cita(2,new Date("2018/01/01"),"11111111X","pintura"));
 oBrico.altaCita(new Cita(3,new Date("2019/01/01"),"88888888X","fregadero"));
 
+oBrico.altaMaterial(new Material("1","Ladrillo","15.5","Grandes"));
+
 // programa principal
 ocultarCapas();
 mostrarJumbotron();
@@ -27,6 +29,7 @@ document.getElementById("formularioAsignarOperario").addEventListener("click",mo
 //document.getElementById("navbarDropdownMenuLink").addEventListener("click",cancelar,false);
 document.getElementById("listaClientes").addEventListener("click",listadoClientes,false);
 document.getElementById("listaOperario").addEventListener("click",listadoOperarios,false);
+document.getElementById("listaMateriales").addEventListener("click",listadoMateriales,false);
 document.getElementById("listaCitas").addEventListener("click",listadoTodasCitas,false);
 document.getElementById("formularioListadoCitas").addEventListener("click",mostrarFormularioListadoCitas,false);
 document.getElementById("formularioAsignarAdministrativo").addEventListener("click",mostrarFormularioAsignarAdministrativo,false);
@@ -89,8 +92,14 @@ document.getElementById("btnAceptarBorrarCliente").addEventListener("click",borr
 document.getElementById("btnBorrarBorrarCliente").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarBorrarCliente").addEventListener("click",cancelar,false);
 
+document.getElementById("formularioCitasCliente").addEventListener("click",mostrarFormularioCitasCliente,false);
+document.getElementById("btnAceptarCitasCliente").addEventListener("click",listadoCitasCliente,false);
+document.getElementById("btnBorrarCitasCliente").addEventListener("click",borrarCampos,false);
+document.getElementById("btnCancelarCitasCliente").addEventListener("click",cancelar,false);
+
 function altaCliente(){
 	validarCliente();
+	var iNumCliente = oBrico.clientes.length;
 	var mensaje = "";
 	var sNIF = document.getElementById("txtDniCli").value.trim();
 	var sNombre = document.getElementById("txtNombreCli").value.trim();
@@ -100,10 +109,13 @@ function altaCliente(){
 
 	mensaje = oBrico.altaCliente(oCliente);
 	alert(mensaje);
+	if (oBrico.clientes.length>iNumCliente)
+		cancelar();
 }
 
 function altaMaterial(){
 	validarAltaMaterial();
+	var iNumMaterial = oBrico.materiales.length;
 	var mensaje = "";
 	var sID = document.getElementById("txtCodMat").value.trim();
 	var sNombre = document.getElementById("txtNombreMat").value.trim();
@@ -114,6 +126,8 @@ function altaMaterial(){
 
 	mensaje = oBrico.altaMaterial(oMaterial);
 	alert(mensaje);
+	if (oBrico.materiales.length>iNumMaterial)
+		cancelar();
 }
 
 function asignarMaterial(){
@@ -187,6 +201,7 @@ function asignarAdmin(){
 
 function altaOperario(){
 	validarOperario();
+	var iNumOperario = oBrico.operarios.length;
 	var mensaje = "";
 	var sNIF = document.getElementById("txtDniOp").value.trim();
 	var sNombre = document.getElementById("txtNombreOp").value.trim();
@@ -194,6 +209,8 @@ function altaOperario(){
 
 	mensaje = oBrico.altaOperario(oOperario);
 	alert(mensaje);
+	if (oBrico.operarios.length>iNumOperario)
+		cancelar();
 }
 
 function altaAdministrativo(){
@@ -440,8 +457,109 @@ function listadoCitas(){
     oVentana.document.body.appendChild(oTabla);
 	ocultarCapas();
 	mostrarJumbotron();
-    
+}
 
+function listadoMateriales(){
+	var oVentana = open("","_blank");
+	oVentana.document.title = "Listado materiales";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de materiales";
+	oVentana.document.body.appendChild(oTitulo);
+
+	var oTabla = document.createElement("table");
+        oTabla.border = "1";
+
+        // THEAD
+        var oTHead = oTabla.createTHead();
+        var oFila = oTHead.insertRow(-1);
+        var oCelda = document.createElement("TH");
+        oCelda.textContent = "ID";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "NOMBRE";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "PRECIO";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "DESCRIPCION";
+        oFila.appendChild(oCelda);
+        
+	
+	var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+	for (let i=0;i<oBrico.materiales.length;i++)
+	{
+		oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.materiales[i].getID();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.materiales[i].getNombre();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.materiales[i].getPrecio();
+		oCelda = oFila.insertCell(-1);
+        oCelda.textContent = oBrico.materiales[i].getDescripcion();
+    }    
+	
+	oVentana.document.body.appendChild(oTabla);
+	ocultarCapas();
+	mostrarJumbotron();
+}
+
+function listadoCitasCliente(){
+	var oVentana = null;
+	var sCliente = document.getElementById("txtDniCitaCli").value;
+	
+	var citasClientePeriodo = obtenerCitasCliente(sCliente);
+	
+	cancelar();
+	oVentana = open("","_blank");
+	oVentana.document.title = "Listado Citas Cliente";
+	
+	var oTitulo =document.createElement("h1");
+	oTitulo.textContent = "Listado de Citas del cliente: "+sCliente;
+	oVentana.document.body.appendChild(oTitulo);
+	
+	var oTabla = document.createElement("table");
+        oTabla.border = "1";
+
+        // THEAD
+        var oTHead = oTabla.createTHead();
+        var oFila = oTHead.insertRow(-1);
+        var oCelda = document.createElement("TH");
+        oCelda.textContent = "Nº CITA";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "FECHA";
+        oFila.appendChild(oCelda);
+        oCelda = document.createElement("TH");
+        oCelda.textContent = "DESCRIPCION";
+        oFila.appendChild(oCelda);
+	
+		var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+	for (let i=0;i<citasClientePeriodo.length;i++)
+	{
+
+		oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = citasClientePeriodo[i].getID();
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = citasClientePeriodo[i].getFecha().toLocaleDateString();
+		oCelda = oFila.insertCell(-1);
+        oCelda.textContent = citasClientePeriodo[i].getDescripcion();
+	}
+    oVentana.document.body.appendChild(oTabla);
+	ocultarCapas();
+	mostrarJumbotron();
+}
+
+function obtenerCitasCliente(sCliente){
+	var array = oBrico.citas.filter(n=>(n.cliente==sCliente));
+	return array;
 }
 
 function obtenerCitas(fechaI, fechaF){
@@ -546,6 +664,11 @@ function mostrarFormularioBorrarOperario(){
 	document.getElementById("divFrmBorrarOperario").style.display = "block";
 }
 
+function mostrarFormularioCitasCliente(){
+	ocultarCapas();
+	document.getElementById("divFrmCitasCliente").style.display = "block";
+}
+
 function mostrarFormularioModificarDatosCliente(){
 	var nif = document.getElementById("txtModificarCliente").value;
 	var oCliente = oBrico.buscar(nif,oBrico.clientes);
@@ -582,6 +705,7 @@ function ocultarCapas(){
 	document.getElementById("divFrmBorrarAdmin").style.display = "none";
 	document.getElementById("divFrmBorrarMaterial").style.display = "none";
 	document.getElementById("divFrmModificarDatosCliente").style.display = "none";
+	document.getElementById("divFrmCitasCliente").style.display = "none";
 	//document.getElementById("divFrmModificarDatosCita").style.display = "block";
 	//document.getElementById("divFrmModificarDatosMaterial").style.display = "block";
 
@@ -647,6 +771,10 @@ function borrarCamposAsignarAdmin(){
 
 function borrarCamposFechaCitas(){
 	frmFechasCitas.reset();
+}
+
+function borrarCamposCitasCliente(){
+	frmCitasCliente.reset();
 }
 /*
 function borrarCampos(){
