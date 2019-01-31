@@ -1,27 +1,10 @@
 // variable global
 var oBrico = new Brico();
-/*
-//datos
-oBrico.altaCliente(new Cliente ("12345678X","Manuel","Cuenca 24","666666666"));
-oBrico.altaCliente(new Cliente ("11111111X","Ale","Sevilla 24","655555555"));
-oBrico.altaCliente(new Cliente ("88888888X","Alvaro","Luna 24","622222222"));
 
-oBrico.altaOperario(new Operario("12345678A","Alvaro"));
-oBrico.altaOperario(new Operario("87654321A","Jose"));
-oBrico.altaOperario(new Operario("11111111A","Ana"));
-
-oBrico.altaCita(new Cita("1",new Date("2017/01/01"),"12345678X","tuberias"));
-oBrico.altaCita(new Cita("2",new Date("2018/01/01"),"11111111X","pintura"));
-oBrico.altaCita(new Cita("3",new Date("2019/01/01"),"88888888X","fregadero"));
-
-oBrico.altaMaterial(new Material("ALB001","Ladrillo","15.5","Grandes"));
-
-oBrico.altaAdministrativo(new Administrativo("77777777A","Carlos"));
-
-*/
 // programa principal
 ocultarCapas();
 mostrarJumbotron();
+
 document.getElementById("formularioCliente").addEventListener("click",mostrarFormularioCliente,false);
 document.getElementById("formularioOperario").addEventListener("click",mostrarFormularioOperario,false);
 document.getElementById("formularioAdministrativo").addEventListener("click",mostrarFormularioAdministrativo,false);
@@ -29,7 +12,6 @@ document.getElementById("formularioMaterial").addEventListener("click",mostrarFo
 document.getElementById("formularioCita").addEventListener("click",mostrarFormularioCita,false);
 document.getElementById("formularioAsignarMaterial").addEventListener("click",mostrarFormularioAsignarMaterial,false);
 document.getElementById("formularioAsignarOperario").addEventListener("click",mostrarFormularioAsignarOperario,false);
-//document.getElementById("navbarDropdownMenuLink").addEventListener("click",cancelar,false);
 document.getElementById("listaClientes").addEventListener("click",listadoClientes,false);
 document.getElementById("listaOperario").addEventListener("click",listadoOperarios,false);
 document.getElementById("listaMateriales").addEventListener("click",listadoMateriales,false);
@@ -112,9 +94,6 @@ document.getElementById("btnCancelarCitasCliente").addEventListener("click",canc
 document.getElementById("btnAceptarInc").addEventListener("click",asignarIncidencia,false);
 document.getElementById("btnBorrarInc").addEventListener("click",borrarCampos,false);
 document.getElementById("btnCancelarInc").addEventListener("click",cancelar,false);
-
-
-
 
 function altaCliente(){
 	validarCliente();
@@ -506,7 +485,7 @@ function listadoTodasCitas(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = oBrico.citas[i].getFecha().toLocaleDateString();
+        oCelda.textContent = oBrico.citas[i].fecha;
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = oBrico.citas[i].getCliente();
 		oCelda = oFila.insertCell(-1);
@@ -565,7 +544,7 @@ function listadoCitas(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasPeriodo[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = citasPeriodo[i].getFecha().toLocaleDateString();
+        oCelda.textContent = citasPeriodo[i].getFecha();
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasPeriodo[i].getCliente();
 		oCelda = oFila.insertCell(-1);
@@ -670,7 +649,7 @@ function listadoCitasCliente(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasClientePeriodo[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = citasClientePeriodo[i].getFecha().toLocaleDateString();
+        oCelda.textContent = citasClientePeriodo[i].getFecha();
 		oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasClientePeriodo[i].getDescripcion();
 	}
@@ -690,7 +669,7 @@ function obtenerCitasCliente(sCliente){
 }
 
 function obtenerCitas(fechaI, fechaF){
-	var array = oBrico.citas.filter(n=>(n.fecha>=fechaI && n.fecha <=fechaF));
+	var array = oBrico.citas.filter(n=>(n.fecha>=fechaI.toLocaleDateString() && n.fecha <=fechaF.toLocaleDateString()));
 	return array;
 }
 
@@ -1696,23 +1675,5 @@ function limpiarErrores() {
 	for (var i=0;i<array.length;i++)
 		array[i].classList.remove("error");
 
-	/*
-	frmAltaCliente.txtDniCli.classList.remove("error");
-    frmAltaCliente.txtNombreCli.classList.remove("error");
-    frmAltaCliente.txtDireccionCli.classList.remove("error");
-    frmAltaCliente.txtTfnoCli.classList.remove("error");
-	frmAsignarMaterial.txtIDMat.classList.remove("error");
-	frmAsignarMaterial.txtCitaMat.classList.remove("error");
-	frmAsignarOperario.txtOperarioOp.classList.remove("error");
-	frmAsignarOperario.txtCitaOp.classList.remove("error");
-	frmAltaMaterial.txtCodMat.classList.remove("error");
-	frmAltaMaterial.txtNombreMat.classList.remove("error");
-	frmAltaMaterial.txtPrecioMat.classList.remove("error");
-	frmAltaMaterial.txtDescripcionMat.classList.remove("error");
-	*/
 }
 
-//Funcion para salir de la aplicacion
-function salir(){
-	window.location = "http://google.com";
-}
