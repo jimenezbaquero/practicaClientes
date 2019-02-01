@@ -569,7 +569,7 @@ function listadoCitas(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasPeriodo[i].getID();
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = citasPeriodo[i].getFecha();
+        oCelda.textContent = citasPeriodo[i].getFecha().toLocaleDateString();
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = citasPeriodo[i].getCliente();
 		oCelda = oFila.insertCell(-1);
@@ -633,7 +633,7 @@ function listadoCitasCliente(){
 	validarlistarCitasClientes();
 		
 	if (oBrico.buscar(txtDniCitaCli.value,oBrico.clientes)!=null){
-	oBrico.clientes = oBrico.clientes.filter(n=>(n.NIF!=txtDniCitaCli.value));		
+		
 	
 	var oVentana = null;
 	var sCliente = document.getElementById("txtDniCitaCli").value;
